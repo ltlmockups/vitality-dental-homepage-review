@@ -1553,7 +1553,38 @@ body{background:var(--vd-paper)}
    ▶ The general trap, worth stating plainly: appending an "override layer" at the
    end of a stylesheet quietly outranks every earlier media query at the same
    specificity. Later-in-file wins, and `@media` does not protect anything. */
-@media (min-width:901px){
+/* 🔴 SPLIT INTO TWO DESKTOP BRANCHES AFTER A MEASURED WCAG FAILURE. The single
+   diagonal below was a REAL SHIPPED DEFECT between 901px and ~1280px, and the
+   rig now proves it: worst case 2.58:1 at 901 and 3.72:1 at 1024, against a
+   4.5:1 bar.
+   THE CAUSE IS ARITHMETIC, NOT TASTE. The copy column is `max-width:38rem` —
+   a FIXED 608px — so the fraction of the viewport it occupies GROWS as the
+   viewport shrinks: ~48% at 1440, 62% at 1024, 71% at 901. The scrim starts
+   opening up at 58%. Above ~1300 the light zone sits harmlessly to the right of
+   the text; below it, the light zone is UNDER the text.
+   ▶ I shipped this while believing the opposite, because I checked 1920, 1440,
+   768 and 375 — every width EXCEPT the band where a fixed-px column and a
+   percentage gradient cross over. The two numbers only disagree in the middle,
+   and the middle is exactly where nobody screenshots.
+   Narrow desktop therefore keeps the scrim heavy across the whole column and
+   only releases at the far edge. */
+@media (min-width:901px) and (max-width:1279px){
+  .hero__scrim{
+    background:
+      linear-gradient(100deg,
+        rgba(20,18,16,.91) 0%,
+        rgba(20,18,16,.89) 45%,
+        rgba(20,18,16,.85) 74%,
+        rgba(20,18,16,.60) 90%,
+        rgba(20,18,16,.52) 100%),
+      linear-gradient(180deg,
+        rgba(20,18,16,.26) 0%,
+        rgba(20,18,16,0) 30%,
+        rgba(20,18,16,0) 64%,
+        rgba(20,18,16,.40) 100%);
+  }
+}
+@media (min-width:1280px){
   .hero__scrim{
     background:
       linear-gradient(102deg,
@@ -1990,3 +2021,143 @@ body{background:var(--vd-paper)}
   .btn--ghost{background:rgba(28,25,22,.62)}
   .hero__social a{background:rgba(18,16,14,.82)}
 }
+
+/* ████████████████████████████████████████████████████████████████████████████
+   CMQA RUNG-2 FIXES — cross-vendor (Codex) review of the premium sweep
+   Returned 3 HIGH + 9 MED + 6 LOW with EVERY local gate green. Third time in
+   this room that a full-scope outside pass has done that, which is the whole
+   argument for the rung being mandatory rather than advisory.
+   ████████████████████████████████████████████████████████████████████████████ */
+
+/* ---- (MED, and it is the WORST finding for Del personally) ------------------
+   🔴 THE APPEND-LAYER TRAP, A THIRD TIME, IN THE SAME SESSION I WROTE TWO
+   PARAGRAPHS WARNING ABOUT IT. The uplift block raises `.hero h1` to 62px at
+   (0,1,1). The short-laptop height queries that cap it at 38px sit EARLIER in
+   the file at the same specificity — so on a 1366x768 or 1440x900 laptop the H1
+   went back to 62px and pushed the CTA row toward the fold. That is Del's own
+   explicit directive ("CTA buttons should be visible") silently reverted by a
+   cosmetic edit.
+   ▶ I caught this exact class twice by hand this session (the mobile scrim, the
+   flat section fills) and STILL shipped a third instance, because I was checking
+   for it in the rules I was thinking about rather than in all of them. The
+   durable answer is not vigilance, it is: an override layer must RE-STATE every
+   media query it outranks. Both height queries are restated below. */
+@media (max-height:900px) and (min-width:901px){
+  .hero h1{font-size:clamp(34px,4.4vw,46px);letter-spacing:-.02em;line-height:1.07}
+}
+@media (max-height:780px) and (min-width:901px){
+  .hero h1{font-size:clamp(29px,3.5vw,39px);line-height:1.06}
+}
+
+/* ---- (MED) THE TWELFTH SPECIFICITY COLLISION, found by Codex not by me. -----
+   Both eyebrow selector lists omit `.steps`, so `.steps__head p` (0,1,1) beats
+   `.eyebrow` (0,1,0) and "YOUR FIRST VISIT" rendered at body size with no bottom
+   margin. I enumerated the cascade for classed <p> elements and still missed
+   this one, because `.eyebrow` is shared furniture rather than a section
+   component and my sweep was organised by section. An enumeration is only as
+   complete as the axis you enumerate along. */
+.steps .eyebrow{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--vd-muted);margin:0 0 clamp(12px,1.6vw,16px);max-width:none;line-height:1.4;
+}
+.steps .eyebrow::before{content:'';width:26px;height:1px;background:var(--vd-gold-deep);flex:0 0 auto}
+
+/* ---- (MED) `.doc img` was reaching the CREDENTIAL MARKS inside `.doc__creds`.
+   Both square credential images were being given the doctor-portrait treatment:
+   width:100%, 4:5, object-fit:cover — two square marks rendered as enormous
+   cropped portrait panels under Dr. Kung. Scoped to the direct child, and the
+   credential marks get their own compact contain rule. */
+.doc > img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%}
+.doc__creds img{
+  width:auto;height:clamp(30px,3.4vw,38px);aspect-ratio:auto;
+  object-fit:contain;display:inline-block;margin:0;border-radius:4px;box-shadow:none;
+}
+
+/* ---- (MED) NON-TEXT CONTRAST, three places, all gold-on-white at 2.29:1 -----
+   ⚠ AND ONE OF MY OWN COMMENTS WAS FALSE: the file states the accreditation
+   stars measure "3.4:1 as a graphic on white". #d0a462 on #fdfbf8 is 2.29:1.
+   I wrote a confident number I had not computed, in a build whose whole record
+   is about not doing that. The stars are the visible rating graphic, so 1.4.11
+   applies and they must clear 3:1.
+   The FAQ focus ring and chevron fail the same way — and the ink fixes written
+   for them earlier in the file are DEAD, because identical selectors later in
+   the file restore the gold. */
+.accred__stars svg{fill:var(--vd-heading)}
+.faq summary::after{border-right-color:var(--vd-heading);border-bottom-color:var(--vd-heading)}
+.faq summary:focus-visible{outline:3px solid var(--vd-ink);outline-offset:2px}
+.faq__a a:focus-visible{outline:3px solid var(--vd-ink);outline-offset:3px}
+/* Form field borders were lightened to #c9c1b4 by the uplift block — 1.78:1
+   against a white field, so the boundary of every input failed 1.4.11. */
+.field input,.field select{border-color:#8a8174}
+.field input:focus-visible,.field select:focus-visible{outline:3px solid var(--vd-ink);outline-offset:2px;border-color:var(--vd-ink)}
+
+/* ---- (MED) THE EDUCATION CARDS PROMISED SOMETHING THEY DO NOT DO. ----------
+   Each carried a "Read more" label and lifted on hover, but the card is a plain
+   <li> with no link, and the label was aria-hidden — so it was a dead affordance
+   that looked clickable to sighted users and did not exist for assistive tech.
+   Worst of both. The label is REMOVED rather than wired, because the destination
+   pages are not built and inventing a URL would be the fabrication this room
+   guards against. The hover lift goes with it: motion that promises
+   interactivity and delivers none is worse than no motion at all. */
+.edu__card:hover{transform:none;box-shadow:var(--sh-3)}
+.edu__more{display:none}
+
+/* ---- (LOW) REDUCED MOTION WAS ONLY HALF-HONOURED. -------------------------
+   Every guard removed the TRANSITION and left the hover DISPLACEMENT, so a
+   reduced-motion user got the same 3-4px jumps with no easing — which is
+   arguably worse than the animation, because an instant jump is a harder
+   vestibular hit than a smooth one. Motion is now actually absent. */
+@media (prefers-reduced-motion:reduce){
+  .btn:hover,.btn:active,
+  .tier:hover,.edu__card:hover,.tech__card:hover,
+  .hero__social a:hover,.foot__social a:hover,.svc__card a:hover{transform:none}
+}
+
+/* ---- (LOW) box-decoration-break FALLBACK. ---------------------------------
+   Without either implementation the flourish falls back to `slice`, drawing a
+   partial, misaligned decoration across line fragments. A clean absence beats a
+   broken presence, so the flourish is removed entirely where it cannot be drawn
+   correctly — the Fraunces italic still carries the emphasis on its own. */
+@supports not ((box-decoration-break:clone) or (-webkit-box-decoration-break:clone)){
+  .hero h1 .em,
+  .lede h2 b,.calm h2 b,.roster h2 b,.steps h2 b,.cond h2 b,.edu h2 b,
+  .proof h2 b,.ba-sec h2 b,.money h2 b,.tech h2 b,.team h2 b,.local h2 b,
+  .faq h2 b,.urgent h2 b,.insight h2 b,.book h2 b{background-image:none;padding-bottom:0}
+}
+
+/* ---- (MED) FORCED-COLORS / WINDOWS HIGH-CONTRAST. -------------------------
+   Non-URL gradient backgrounds are DISCARDED in forced-colors mode — including
+   the hero scrim, which is the only thing making the hero text legible. The
+   video is not discarded. So a high-contrast user would have got forced system
+   text directly on bright moving footage: the single most severe state on this
+   page, and one no scanner I ran even looks at. The video goes, the hero gets a
+   system canvas, and every glass element gets a real border. */
+@media (forced-colors:active){
+  .hero__video{display:none}
+  .hero{background:Canvas}
+  .hero__scrim{background:none}
+  .hero h1,.hero__sub,.hero__eyebrow,.hero__proof li{color:CanvasText}
+  .hero__proof li,.hero__social a,.btn,.rev__card,.tier,.cond__card,
+  .edu__card,.tech__card,.book__form,.accred__row > li,.faq details{
+    border:1px solid CanvasText;background:Canvas;box-shadow:none;
+  }
+  .hero h1 .em,.lede h2 b,.calm h2 b,.roster h2 b,.steps h2 b,.cond h2 b,
+  .edu h2 b,.proof h2 b,.ba-sec h2 b,.money h2 b,.tech h2 b,.team h2 b,
+  .local h2 b,.faq h2 b,.urgent h2 b,.insight h2 b,.book h2 b{background-image:none}
+}
+
+/* ---- (LOW) TWO FALSE CLAIMS IN MY OWN COMMENTS, CORRECTED HERE RATHER THAN
+   QUIETLY EDITED AWAY. Codex recomputed them: the primary button ramp endpoints
+   are 10.84:1 and 7.29:1 (I wrote 9.5 and 6.1); #212121 on #f8f4ed is 14.69:1
+   (I wrote 15.4); gold-light on #2a3139 is 8.54:1 (the file says 9.6). All still
+   PASS comfortably — the values were conservative in the safe direction — but a
+   confidently wrong audit note is exactly what later decisions get built on.
+   ▶ Standing fix, boarded: generate these comments from the same contrast
+   function the gate uses instead of typing them.
+   ---- (LOW) AND THE HEADER IS NOT STICKY. My comment describes video and cream
+   registering through a glass header as the page moves. `.site-head` is
+   position:relative and scrolls away; the blur is real but nothing passes behind
+   it. The STYLE is fine and stays; the CLAIM was wrong. Making it genuinely
+   sticky is a layout change with real collision risk against two existing sticky
+   bars, so it is boarded, not smuggled into a polish pass. */

@@ -78,7 +78,7 @@
         {"@type":"Question","name":"Do you offer sedation for anxious patients?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. We offer different levels of sedation to help our patients feel comfortable and relaxed, including nitrous oxide (laughing gas) and oral sedation."}},
         {"@type":"Question","name":"How much does it cost to visit a dentist in Plano without insurance?","acceptedAnswer":{"@type":"Answer","text":"Costs vary depending on the service, and our in-house adult wellness plan is $34 a month and the child plan is $29. We offer complimentary consultations where we can give you transparent pricing for what you actually need."}},
         {"@type":"Question","name":"Do you speak languages other than English?","acceptedAnswer":{"@type":"Answer","text":"Yes! At Vitality Dental, we speak your language, including English, Japanese, Chinese, and Spanish. Dr. Kung is fluent in Mandarin."}},
-        {"@type":"Question","name":"What should I do if I have a dental emergency on the weekend?","acceptedAnswer":{"@type":"Answer","text":"Call our office at (972) 964-3800. We prioritize emergency cases and offer same-day appointments whenever possible."}},
+        {"@type":"Question","name":"What should I do if I have a dental emergency on the weekend?","acceptedAnswer":{"@type":"Answer","text":"If it is life-threatening, call 911 or go to the nearest emergency room. That includes uncontrolled bleeding, swelling that affects your breathing or swallowing, or a facial injury. For dental pain, a knocked-out tooth or a lost crown, call our office at (972) 964-3800. We prioritize emergency cases and offer same-day appointments whenever possible. Office hours are Monday to Friday, 7AM to 3PM."}},
         {"@type":"Question","name":"Are you accepting new patients?","acceptedAnswer":{"@type":"Answer","text":"Yes. New patients and emergency appointments are always welcome, with short wait times and a family-like atmosphere."}}
       ]
     }
@@ -1163,19 +1163,19 @@
           <img src="../shared/img/office-detail.webp" width="1536" height="1024" alt="" loading="lazy" decoding="async">
           <h3>Is it a cavity, or Cedar Fever?</h3>
           <p>Between December and February, upper-molar pain in North Texas is often sinus pressure rather than a dying tooth. How to tell the difference.</p>
-          <span class="edu__more" aria-hidden="true">Read more</span>
+          
         </li>
         <li class="edu__card reveal">
           <img src="../shared/img/svc-sedation.webp" width="1024" height="683" alt="" loading="lazy" decoding="async">
           <h3>What sedation actually feels like</h3>
           <p>Nitrous oxide and oral sedation without the jargon, including what you will remember afterwards and whether you need someone to drive you home.</p>
-          <span class="edu__more" aria-hidden="true">Read more</span>
+          
         </li>
         <li class="edu__card reveal">
           <img src="../shared/img/offer-insurance.webp" width="300" height="171" alt="" loading="lazy" decoding="async">
           <h3>Going to the dentist without insurance</h3>
           <p>What care costs in Plano when you are paying out of pocket, and how an in-house plan changes the arithmetic.</p>
-          <span class="edu__more" aria-hidden="true">Read more</span>
+          
         </li>
       </ul>
     </div>
@@ -1239,7 +1239,20 @@
             <option>Children&rsquo;s dentistry</option>
           </select>
         </div>
-        <button class="btn btn--primary book__submit" type="submit">Request a call back</button>
+        <!-- 🔴 type="button", NOT type="submit" — CMQA Rung-2 HIGH.
+             The comment above says "no action, submission prevented". The FIRST half was
+             true and the SECOND half was only true WHILE JAVASCRIPT RAN. A <form> with no
+             action and a submit button defaults to GET against the current URL, so with JS
+             disabled, blocked by CSP, or simply broken, pressing this button reloaded the
+             page with ?name=…&phone=…&email=…&service=… in the address bar. That does two
+             bad things at once: it LOOKS like a successful booking on a mockup that books
+             nothing, and it writes a real person's name, phone and email into browser
+             history, server logs and any referrer header.
+             `type="button"` cannot submit anything, in any engine, with or without
+             scripting — the guarantee moves from a script into the markup itself.
+             ▶ Same family as the scripting:none defect already recorded in this file: I
+             had again written a control whose safety depended on my code running. -->
+        <button class="btn btn--primary book__submit" type="button">Request a call back</button>
         <p class="book__privacy">We only use this to contact you about an appointment. Please don&rsquo;t send medical details here.</p>
         <p class="book__demo" id="bookDemo" role="status" hidden>This is a design mockup, so nothing was sent.</p>
       </form>
@@ -1442,12 +1455,23 @@ document.documentElement.classList.add('js');
    submission is prevented and the form SAYS what happened. A form that silently posts nowhere is
    the worst of the three options: the visitor believes they have booked.
    The message is role="status", so a screen reader is told too rather than only sighted users. ---- */
+/* 🔴 REWIRED FROM 'submit' TO THE BUTTON'S 'click' — CMQA Rung-2 HIGH follow-through.
+   The button is now type="button", so a submit event can never fire and a submit listener
+   would be dead code that silently does nothing. Two consequences worth stating:
+     · the demo notice now fires on click, which is the only event that still exists;
+     · the SAFETY no longer depends on this listener at all. Previously e.preventDefault()
+       was the only thing standing between a visitor and their name, phone and email being
+       written into the URL. Now the markup guarantees it and this script only handles the
+       cosmetic notice — if this whole block fails to run, nothing unsafe happens, it just
+       does not show a message.
+   That is the right split: never let a script be the only thing preventing a data leak. */
 (function(){
   var form = document.querySelector('.book__form');
   if (!form) return;
   var note = document.getElementById('bookDemo');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
+  var btn  = form.querySelector('.book__submit');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
     if (note) note.hidden = false;
   });
 })();
