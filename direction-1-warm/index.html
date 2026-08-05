@@ -426,7 +426,7 @@
       <!-- Their own section heading, restored as the eyebrow. The parity pass caught that it
            had been replaced wholesale by my line rather than kept alongside it. -->
       <p class="eyebrow eyebrow--gold">Comprehensive services under one roof</p>
-      <h2 id="services-h">From your child’s first visit <b>to senior care</b></h2>
+      <h2 id="services-h">From your child’s first visit <b>to&nbsp;senior care</b></h2>
       <p class="roster__intro">Stop driving all over North Texas for specialists. We handle complex care right here in West Plano.</p>
 
       <!-- 🔴 REBUILT 2026-08-03 FROM A LIVE RE-FETCH. Del: "mostly images and videos missing…
@@ -455,7 +455,14 @@
           <p>Veneers to Invisalign, at the intersection of science and artistry.</p>
         </li>
         <li class="pillar">
-          <img src="../shared/img/svc-preventive.webp" width="1024" height="683" alt="" loading="lazy" decoding="async">
+          <!-- 🔴 CLASSED, NOT LEFT TO THE SHARED RULE. The other three pillars are 512x512
+               line-art ICONS and the plate treatment (52px box, contain, cream backing) is
+               correct for them. This one is a 1024x683 PHOTOGRAPH, and the same rule
+               letterboxed it into a 52px square — a legible photo reduced to an illegible
+               grey smudge on a cream tile. Eyes-on caught it; no gate can, because the file
+               exists, the ratio is preserved and the alt text is right. A rule written for
+               one asset TYPE silently mangles another. -->
+          <img class="pillar__photo" src="../shared/img/svc-preventive.webp" width="1024" height="683" alt="" loading="lazy" decoding="async">
           <h3>Family &amp; Preventive Dentistry</h3>
           <p>From your child&rsquo;s first visit to senior care, stopping problems before they start.</p>
         </li>
@@ -764,7 +771,7 @@
       <div class="urgent__grid">
         <div class="reveal">
           <p class="eyebrow eyebrow--gold">Emergency dentistry</p>
-          <h2 id="urgent-h">Toothaches don&rsquo;t wait <b>for business hours</b></h2>
+          <h2 id="urgent-h">Toothaches don&rsquo;t wait <b>for&nbsp;business hours</b></h2>
           <p>If you are in pain, we prioritize getting you out of it. Whether it is a broken tooth, severe pain or a dental injury, we offer same-day emergency appointments during office hours, Monday to Friday, 7AM to 3PM.</p>
           <div class="urgent__cta">
             <a class="btn btn--primary" href="tel:+19729643800">Call (972)&nbsp;964-3800</a>
@@ -922,7 +929,7 @@
     <div class="wrap">
       <div class="insight__body reveal">
         <p class="eyebrow eyebrow--gold">Dr. Kung&rsquo;s local insight</p>
-        <h2 id="insight-h">Is it a cavity, <b>or &ldquo;Cedar Fever&rdquo;?</b></h2>
+        <h2 id="insight-h">Is it a cavity, <b>or&nbsp;&ldquo;Cedar Fever&rdquo;?</b></h2>
         <p class="insight__kicker">Living in North Texas comes with unique challenges for your mouth.</p>
         <p>Every year between December and February, we see dozens of patients rush in convinced they have a dying tooth in the upper back of their mouth. The real culprit? Mountain Cedar pollen.</p>
         <p>Your upper molar roots sit right below your maxillary sinuses. When Cedar Fever inflames those sinuses, the pressure pushes down on the nerves of your teeth and mimics a toothache.</p>
@@ -946,7 +953,16 @@
     <div class="wrap">
       <div class="team__head reveal">
         <p class="eyebrow">The people</p>
-        <h2 id="team-h">About Dr. Andrew Kung <b>&amp; the Vitality Dental team</b></h2>
+        <!-- 🔴 THE AMPERSAND MOVED OUT OF THE ACCENT, and the reason is worth keeping.
+             With `&amp;` inside the <b>, the accent's first line fragment was the single
+             character "&" — and the flourish, which now paints per line fragment, drew a
+             two-centimetre gold squiggle under one orphaned ampersand. It read as a
+             rendering fault, not as emphasis.
+             CSS cannot see this: no selector knows how many characters landed on a line.
+             The only reliable fix is to not START an accent on a word that can orphan. The
+             accent now begins at "the", which cannot be stranded alone because the phrase
+             that follows it always wraps with it. -->
+        <h2 id="team-h">About Dr. Andrew Kung &amp; <b>the&nbsp;Vitality Dental team</b></h2>
         <p>Dr. Andrew Kung is a Plano native who believes dentistry is never only about teeth. After personally undergoing extensive treatment to transform his own smile, he understands dental fear and what a healthy smile changes.</p>
         <p>He is joined by <b>Dr. David Burkett</b> and <b>Dr. Brian Son</b>, a team combining decades of experience with current dental technology.</p>
       </div>

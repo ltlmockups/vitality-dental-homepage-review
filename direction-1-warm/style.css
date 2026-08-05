@@ -1249,3 +1249,744 @@ html{scroll-padding-top:120px}
   .nav .btn .btn__long{display:none}
   .nav .btn::after{content:'Book'}
 }
+
+/* ████████████████████████████████████████████████████████████████████████████
+   PREMIUM UPLIFT — 5 SWEEPS  ·  2026-08-04
+   ────────────────────────────────────────────────────────────────────────────
+   Del: "it doesn't look premium enough", benchmarked against a competing build.
+
+   🔴 THE DIAGNOSIS WAS MEASURED, NOT FELT. Counting the depth signals in both
+   stylesheets:
+
+        signal            this build   the benchmark   ratio
+        box-shadow             3            63          21x
+        border-radius         14           117         8.4x
+        gradient               4            69          17x
+        backdrop-filter        0             6           —
+        transition            19            59         3.1x
+
+   That is the whole answer. This page was built to B13 MINIMALISM and executed it
+   correctly — hairline borders, flat fills, sharp corners, no depth. But minimalism
+   without MATERIAL does not read as restraint, it reads as unfinished. Luxury is not
+   the absence of decoration; it is the presence of substance: paper that is warm
+   rather than white, edges that catch light, type that has a voice, surfaces that sit
+   ABOVE their ground rather than being drawn onto it.
+
+   ⚠ WHAT IS DELIBERATELY *NOT* COPIED FROM THE BENCHMARK. It carries a phone number
+   this room has never verified ((972) 645-4100 — a FIFTH number in a client whose
+   number confusion is an open board item), a multilingual staffing claim this room
+   is holding pending a roster confirm, and patient avatars whose releases are an
+   open question. The VISUAL LANGUAGE is a fair thing to learn from. The CLAIMS are
+   not, and none of them crossed over.
+
+   ⚠ DEL'S SHARP-CORNER DIRECTIVE SURVIVES ("try using buttons that are not
+   rounded"). Buttons go to 3px, not to the benchmark's 999px pill. Sharp is a real
+   luxury register — it was never the problem. The problem was that nothing had
+   weight.
+   ████████████████████████████████████████████████████████████████████████████ */
+
+/* ============================================================================
+   SWEEP 1 · MATERIAL FOUNDATION — the ground everything else stands on
+   ============================================================================ */
+
+/* The display face. Self-hosted for the same reason Poppins is: a review link on
+   GitHub Pages must not depend on a third-party font CDN being reachable, and a
+   FOUT on the signature word is exactly where it would be most visible.
+   Latin subset only, 42.6KB — italic 600 is the single cut this design uses. */
+@font-face{
+  font-family:Fraunces;
+  src:url('../shared/fonts/fraunces-italic-600.woff2') format('woff2');
+  font-weight:600;font-style:italic;font-display:swap;
+}
+
+:root{
+  /* ---- Surfaces. The single highest-leverage change on the page. -------------
+     Pure #fff is a SCREEN colour; warm off-white is a PAPER colour, and every
+     premium print-derived identity in this category sits on paper. The cards then
+     stay pure white so they lift OFF the ground instead of dissolving into it —
+     white-on-white is why the old card grid read as a wireframe. */
+  --vd-paper:#fdfbf8;        /* the new "white" section ground */
+  --vd-paper-2:#f7f3ec;      /* replaces the COOL #f6f8fa alt band */
+  --vd-card:#ffffff;         /* cards only — always lighter than their ground */
+
+  /* ---- Shadow scale, WARM-TINTED. ------------------------------------------
+     Grey shadows on a warm ground read as dirt. These are mixed from the brand's
+     own bronze-black (58,44,26) so the page casts a warm shadow, the way objects
+     photographed in warm light do. Two layers each: a tight contact shadow that
+     defines the edge, and a wide soft one that gives the mass. */
+  --sh-1:0 1px 2px rgba(58,44,26,.05), 0 2px 8px rgba(58,44,26,.045);
+  --sh-2:0 2px 4px rgba(58,44,26,.04), 0 12px 28px -8px rgba(58,44,26,.12);
+  --sh-3:0 4px 8px rgba(58,44,26,.05), 0 28px 56px -18px rgba(58,44,26,.17);
+  --sh-4:0 8px 18px rgba(58,44,26,.06), 0 48px 88px -26px rgba(58,44,26,.24);
+  --sh-gold:0 12px 30px -12px rgba(176,132,62,.45);
+  --sh-inset:inset 0 1px 0 rgba(255,255,255,.7);
+
+  /* ---- Radius scale. Buttons stay effectively square (Del). ---------------- */
+  --r-1:3px;    /* buttons, chips, tags */
+  --r-2:10px;   /* form fields, small media, badges */
+  --r-3:16px;   /* cards, panels */
+  --r-4:24px;   /* large media, feature panels */
+
+  /* ---- Hairlines. The old --vd-line is a flat warm grey; these carry a tint so
+     an edge reads as a fold in paper rather than a drawn box. */
+  --vd-hair:rgba(58,44,26,.10);
+  --vd-hair-strong:rgba(58,44,26,.16);
+  --vd-hair-gold:rgba(176,132,62,.30);
+
+  --ease:cubic-bezier(.2,.8,.2,1);
+
+  /* Wider measure. 1100px on a 1920 screen is why this page felt like a template:
+     the content column was narrower than the browser chrome around it. */
+  --wrap:1280px;
+}
+
+/* The ground itself. A single very soft gold wash in the upper right — the same
+   trick a photographer uses to keep a white backdrop from going dead. It is under
+   every section that does not set its own background, and it is subtle enough that
+   you notice its ABSENCE, not its presence. */
+/* 🔴 REWRITTEN AFTER RUNG-1 KILLED THE FIRST VERSION. I originally put the warm
+   wash on `body` with `background-attachment:fixed`, copying the benchmark. Then I
+   counted: SIXTEEN sections on this page set their own opaque background. The body
+   is covered edge to edge, top to bottom — the wash was painting underneath opaque
+   paint and was visible precisely nowhere, while `fixed` bought a full-viewport
+   repaint on every scroll frame (and is silently ignored on iOS Safari anyway).
+   Decoration that cannot be seen is not restraint, it is cost with no benefit.
+   ▶ WHY I DID NOT CATCH IT BY LOOKING: the page looked right, because the paper
+   colour was ALSO being set correctly by the section rules. The wash's absence is
+   invisible when the fallback is the thing you wanted anyway. You cannot see a
+   missing subtlety; you can only count the thing covering it.
+   The wash now lives ON the paper sections, where there is nothing above it. */
+body{background:var(--vd-paper)}
+.accred,.calm,.proof,.money,.team,.faq,.cond{
+  background:
+    radial-gradient(1200px 520px at 88% 0%, rgba(208,164,98,.13), transparent 60%),
+    linear-gradient(180deg,#fbf8f3 0%, var(--vd-paper) 55%, #f5f0e7 100%);
+}
+.ba-sec,.edu,.local{
+  background:
+    radial-gradient(1000px 460px at 6% 0%, rgba(208,164,98,.10), transparent 58%),
+    var(--vd-paper-2);
+}
+
+/* ⚠ THE FLAT-FILL VERSION OF THESE RULES USED TO LIVE HERE AND HAS BEEN DELETED,
+   NOT LEFT IN PLACE. Moving the wash up into the section rules (above) left this
+   block sitting LATER in the file at the same (0,1,0) specificity — so it silently
+   overrode the gradients with flat paint and re-created, within one edit, the exact
+   defect I had just written a paragraph about. Caught by re-reading the file order
+   instead of trusting the edit.
+   ▶ That is twice in this sweep that appending a layer at the end of a stylesheet
+   beat something it was never meant to touch. Source order is the whole cascade
+   when specificity ties, and an "override layer" has no way to know what it is
+   standing on. */
+
+/* ============================================================================
+   SWEEP 2 · ELEVATION — every card, panel and photograph gets mass
+   ============================================================================ */
+
+/* ---- The card family. One recipe, applied everywhere, which is what makes a
+   page read as DESIGNED rather than assembled: pure white above warm paper, a
+   hairline that only just exists, a soft warm shadow, and a real corner radius. */
+.rev__card,
+.tier,
+.cond__card,
+.edu__card,
+.tech__card,
+.money__col--plan,
+.team__local,
+.book__form,
+.accred__type{
+  background:var(--vd-card);
+  border:1px solid var(--vd-hair);
+  border-radius:var(--r-3);
+  box-shadow:var(--sh-2);
+  transition:transform 320ms var(--ease),box-shadow 320ms var(--ease);
+}
+@media (prefers-reduced-motion:reduce){
+  .rev__card,.tier,.cond__card,.edu__card,.tech__card,
+  .money__col--plan,.team__local,.book__form,.accred__type{transition:none}
+}
+
+/* The gold top-rule on review + condition cards was a 3px slab sitting on a square
+   corner, which is precisely the detail that read as "bootstrap panel". It becomes
+   a short inset rule that starts where the padding starts. */
+.rev__card,.cond__card{border-top:1px solid var(--vd-hair);position:relative;overflow:hidden}
+.rev__card::before,.cond__card::before{
+  content:'';position:absolute;left:0;top:0;height:3px;width:64px;
+  background:linear-gradient(90deg,var(--vd-gold-deep),rgba(208,164,98,0));
+}
+
+/* Cards that the visitor can act on lift toward the cursor. The ones that are
+   purely informational do not — motion that promises interactivity and delivers
+   none is worse than no motion. */
+.tier:hover,.edu__card:hover,.tech__card:hover{
+  transform:translateY(-4px);box-shadow:var(--sh-3);
+}
+
+/* ---- Photography. Every image on the page was a hard-cornered rectangle butted
+   against the layout. Radius + a soft shadow is what makes a photo read as a
+   PRINT sitting on the page rather than a hole cut into it. */
+.calm__media img,
+.pivot__media img,
+.tech__card img,
+.edu__card img,
+.svc__card img,
+.doc img,
+.vids__row video{
+  border-radius:var(--r-3);
+}
+.calm__media img,.pivot__media img{box-shadow:var(--sh-3)}
+.doc img{box-shadow:var(--sh-2)}
+/* Cards clip their own media, so the image corners inside them square up again to
+   sit flush with the card's inner edge — a rounded image inside a rounded card at
+   the same radius produces a visible double-curve. */
+.edu__card img,.tech__card img{border-radius:var(--r-3) var(--r-3) 0 0}
+.tech__card{overflow:hidden;padding-bottom:clamp(20px,2.4vw,26px)}
+.tech__card h3,.tech__card p{padding-inline:clamp(20px,2.4vw,26px)}
+.tech__card img{margin-bottom:clamp(16px,2vw,20px)}
+.edu__card{overflow:hidden}
+
+/* Service tiles on the dark band — glass rather than a wire outline. */
+.svc__card a{
+  border:1px solid rgba(255,255,255,.10);border-radius:var(--r-3);overflow:hidden;
+  background:rgba(255,255,255,.045);
+  box-shadow:0 18px 40px -22px rgba(0,0,0,.7);
+}
+.svc__card a:hover{
+  border-color:var(--vd-hair-gold);background:rgba(255,255,255,.08);
+  box-shadow:0 26px 54px -22px rgba(0,0,0,.85);
+}
+.svc__card img{border-radius:0}
+.pillar{border:1px solid rgba(255,255,255,.12);border-radius:var(--r-3);background:rgba(255,255,255,.045)}
+.pillar img{border-radius:var(--r-2)}
+
+/* Dark panels get depth too — a dark box with no shadow on a dark band is just a
+   colour change. */
+.local__card,.insight__tip{border-radius:var(--r-3)}
+.local__card{box-shadow:var(--sh-4)}
+.insight__tip{border-radius:0 var(--r-3) var(--r-3) 0}
+.local__areas li{border-radius:var(--r-1);border-color:var(--vd-hair);background:var(--vd-card);box-shadow:var(--sh-1)}
+.vids__row video{border-color:var(--vd-hair);box-shadow:var(--sh-2)}
+.ba__frame{border-radius:var(--r-3);box-shadow:var(--sh-3)}
+.book__form{color:var(--vd-ink)}
+.field input,.field select{border-radius:var(--r-2);border-color:#c9c1b4;box-shadow:var(--sh-inset)}
+.book__demo{border-radius:0 var(--r-1) var(--r-1) 0}
+
+/* ============================================================================
+   SWEEP 3 · SIGNATURE — the one thing you remember about this page
+   ============================================================================ */
+
+/* THE MOVE: the emphasised phrase in every headline leaves Poppins entirely and is
+   set in Fraunces italic, with a hand-drawn gold flourish beneath it. It gives the
+   page a VOICE — one warm, human, slightly imperfect gesture repeated at every
+   turn, against an otherwise disciplined geometric sans.
+   ⚠ The flourish sits BELOW the baseline rather than behind the glyphs. The
+   benchmark paints its version at z-index:-1 behind the text; that works only
+   while no ancestor creates a stacking context, and this page has several. Sitting
+   it under the descenders is unconditionally safe and reads the same. */
+.hero h1 .em,
+.lede h2 b,.calm h2 b,.roster h2 b,.steps h2 b,.cond h2 b,.edu h2 b,
+.proof h2 b,.ba-sec h2 b,.money h2 b,.tech h2 b,.team h2 b,.local h2 b,
+.faq h2 b,.urgent h2 b,.insight h2 b,.book h2 b{
+  font-family:Fraunces,Georgia,'Times New Roman',serif;
+  font-style:italic;font-weight:600;
+  letter-spacing:-.005em;
+  position:relative;
+  /* Fraunces sits optically smaller than Poppins at the same em, and its italic
+     leans out of its own box on the right. Both corrected here rather than by
+     nudging each heading. */
+  font-size:1.06em;padding-right:.06em;
+}
+/* 🔴 THE FLOURISH IS A BACKGROUND, NOT A PSEUDO-ELEMENT — AND THAT IS A CORRECTION.
+   My first pass drew it with an absolutely-positioned ::after, which is what the
+   benchmark does. It was wrong here and eyes-on caught it in one screenshot: the
+   hero accent "Where You Can Finally Relax" wraps to TWO lines, and an absolutely
+   positioned child of a multi-line INLINE box resolves against the union of its
+   line boxes — so the flourish drew once, under the last line only, at the wrong
+   width. It looked like a rendering fault.
+   `background` + `box-decoration-break:clone` paints the image on EVERY line
+   fragment, which is the only technique that survives an unknown wrap point. The
+   benchmark never hit this because its accent is `white-space:nowrap` and always
+   one line — a constraint I did not want, because forcing nowrap on a phone is how
+   a headline overflows the viewport. */
+.hero h1 .em,
+.lede h2 b,.calm h2 b,.roster h2 b,.steps h2 b,.cond h2 b,.edu h2 b,
+.proof h2 b,.ba-sec h2 b,.money h2 b,.tech h2 b,.team h2 b,.local h2 b,
+.faq h2 b,.urgent h2 b,.insight h2 b,.book h2 b{
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'%3E%3Cpath d='M3 12.5 C 68 4.5, 152 4.5, 297 10.5' stroke='%23c9a15c' stroke-width='4.5' fill='none' stroke-linecap='round' opacity='.85'/%3E%3C/svg%3E") no-repeat left bottom/100% .22em;
+  padding-bottom:.16em;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+/* On the dark bands the flourish needs the lighter gold to stay visible. */
+.roster h2 b,.urgent h2 b,.insight h2 b,.book h2 b{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'%3E%3Cpath d='M3 12.5 C 68 4.5, 152 4.5, 297 10.5' stroke='%23e5cda9' stroke-width='4.5' fill='none' stroke-linecap='round' opacity='.9'/%3E%3C/svg%3E");
+}
+/* The hero accent sits on video, so its flourish is the brightest gold available. */
+.hero h1 .em{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'%3E%3Cpath d='M3 12.5 C 68 4.5, 152 4.5, 297 10.5' stroke='%23e8cfa4' stroke-width='4.5' fill='none' stroke-linecap='round' opacity='.95'/%3E%3C/svg%3E");
+}
+/* A long italic phrase must be allowed to wrap on a phone rather than overflow. */
+@media (max-width:640px){
+  .hero h1 .em{font-size:1.04em}
+}
+
+/* ---- The scrim becomes DIRECTIONAL, and the footage gets its colour back. ----
+   🔴 The single biggest "cheap" tell in the hero was not the type — it was the
+   picture. A flat top-to-bottom scrim darkens the ENTIRE frame evenly, so the one
+   thing worth showing (their real, bright, plant-filled operatory on the right)
+   was being greyed out to protect text that only occupies the left third. The
+   result read as a washed-out stock plate.
+   Two fixes, both cheap: the scrim now runs on a DIAGONAL — heavy where the copy
+   sits, opening up over the room — and the video carries a small saturation and
+   contrast lift so warm wood and greenery read as warm wood and greenery.
+   ⚠ CONTRAST IS NOT WEAKENED WHERE IT MATTERS. The left-hand stops are DEEPER
+   than the old flat curve (.62/.80/.90 against .12/.58/.78), so every measured
+   text band sits on more scrim than before, not less. The opening-up happens only
+   past 62% of the width, where no text exists at any viewport. */
+.hero__video{filter:saturate(1.10) contrast(1.05) brightness(1.02)}
+
+/* 🔴 THIS RULE IS MEDIA-SCOPED AND THAT SCOPE IS LOAD-BEARING — I nearly shipped it
+   without one. The mobile hero scrim is a CMQA-HIGH fix that lives EARLIER in this
+   file (`@media (max-width:900px)`, measured eyebrow 2.47:1 -> 5.31:1). A media
+   query contributes NOTHING to specificity, so an unguarded `.hero__scrim` written
+   later would have beaten it at EVERY width and silently reverted a WCAG AA failure
+   that took a cross-vendor review to find in the first place.
+   ▶ The general trap, worth stating plainly: appending an "override layer" at the
+   end of a stylesheet quietly outranks every earlier media query at the same
+   specificity. Later-in-file wins, and `@media` does not protect anything. */
+@media (min-width:901px){
+  .hero__scrim{
+    background:
+      linear-gradient(102deg,
+        rgba(20,18,16,.90) 0%,
+        rgba(20,18,16,.86) 30%,
+        rgba(20,18,16,.62) 58%,
+        rgba(20,18,16,.30) 78%,
+        rgba(20,18,16,.34) 100%),
+      linear-gradient(180deg,
+        rgba(20,18,16,.30) 0%,
+        rgba(20,18,16,0) 26%,
+        rgba(20,18,16,0) 62%,
+        rgba(20,18,16,.42) 100%);
+  }
+}
+/* Mobile keeps its own, DEEPER curve. The hero is shorter and the text sits nearer
+   the top, so the copy band cannot rely on a diagonal — it gets a near-flat heavy
+   wash with only the far edge opening up. Every stop here is at or above the
+   measured mobile curve it replaces (.52/.74/.84/.90). */
+@media (max-width:900px){
+  .hero__scrim{
+    background:
+      linear-gradient(160deg,
+        rgba(20,18,16,.62) 0%,
+        rgba(20,18,16,.78) 34%,
+        rgba(20,18,16,.86) 66%,
+        rgba(20,18,16,.92) 100%),
+      linear-gradient(90deg,
+        rgba(20,18,16,.28) 0%,
+        rgba(20,18,16,0) 70%);
+  }
+}
+
+/* ---- Glass header. The flat ink slab is replaced by the brand ink at 88% with a
+   real backdrop blur, so the video and the cream divider register faintly through
+   it as the page moves. This is the single most "expensive-looking" cheap effect
+   available, and the page had none of it. */
+.site-head{
+  background:linear-gradient(180deg,rgba(24,24,24,.94),rgba(20,20,20,.86));
+  -webkit-backdrop-filter:saturate(150%) blur(14px);
+  backdrop-filter:saturate(150%) blur(14px);
+  border-bottom:1px solid rgba(220,187,139,.16);
+  box-shadow:0 1px 0 rgba(255,255,255,.04), 0 18px 44px -30px rgba(0,0,0,.9);
+}
+/* @supports guard: without backdrop-filter the translucent fill would let hero
+   video show through at full strength behind the nav. Opaque fallback first. */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .site-head{background:var(--vd-ink)}
+}
+
+/* ---- The utility bar gains a hairline of gold light along its base. */
+.emerg{
+  background:linear-gradient(180deg,#1a1a1a,#141414);
+  border-bottom:1px solid rgba(220,187,139,.28);
+}
+
+/* ---- Buttons. Still square (3px reads as "sharp with the corner knocked off",
+   not as a pill), but now they are OBJECTS: a gradient fill so the surface has a
+   direction, a warm shadow so they sit above the page, and a real lift on hover
+   with an eased curve rather than a linear nudge. */
+.btn{
+  border-radius:var(--r-1);
+  padding:16px 30px;
+  transition:transform 260ms var(--ease),box-shadow 260ms var(--ease),
+             background-color 260ms var(--ease),background-image 260ms var(--ease),
+             border-color 260ms var(--ease),color 260ms var(--ease);
+}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+.btn--primary{
+  background-image:linear-gradient(160deg,var(--vd-gold-light) 0%,var(--vd-gold) 46%,var(--vd-gold-deep) 100%);
+  box-shadow:var(--sh-gold),var(--sh-inset);
+  border-color:rgba(122,90,38,.22);
+}
+/* Contrast holds across the whole ramp: ink #271c0c measures 9.5:1 on the lightest
+   stop (#e5cda9) and 6.1:1 on the darkest (#d0a462) — both clear of the 4.5:1 bar,
+   which is why the gradient runs light-to-deep rather than deep-to-light. */
+.btn--primary:hover{
+  background-image:linear-gradient(160deg,#efdcc0 0%,var(--vd-gold-light) 46%,var(--vd-gold) 100%);
+  transform:translateY(-3px);
+  box-shadow:0 20px 44px -14px rgba(176,132,62,.6),var(--sh-inset);
+}
+.btn--primary:active{transform:translateY(-1px)}
+.btn--ghost{
+  border-color:rgba(255,255,255,.42);
+  background:rgba(255,255,255,.06);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+.btn--ghost:hover{
+  border-color:var(--vd-white);background:rgba(255,255,255,.14);
+  transform:translateY(-3px);box-shadow:0 18px 38px -18px rgba(0,0,0,.6);
+}
+.btn--ghost:active{transform:translateY(-1px)}
+
+/* ---- Hero proof strip becomes a row of glass chips. It was four bare text items
+   separated by dots — informationally right, materially nothing. */
+.hero__proof{gap:.6rem}
+.hero__proof li{
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.20);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-radius:var(--r-1);
+  padding:8px 14px;
+  box-shadow:0 8px 22px -14px rgba(0,0,0,.8);
+}
+/* The dot separators existed to divide a run-on line. Chips already divide it, and
+   a leading dot inside a chip reads as a bullet that lost its list. */
+.hero__proof li+li::before{display:none}
+
+/* ---- The eyebrow, everywhere, becomes a small plate rather than loose caps. */
+.proof .eyebrow,.ba-sec .eyebrow,.urgent .eyebrow,.money .eyebrow,.tech .eyebrow,
+.insight .eyebrow,.team .eyebrow,.local .eyebrow,.faq .eyebrow,.book .eyebrow,
+.roster .eyebrow,.eyebrow{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:12px;letter-spacing:.18em;
+}
+.proof .eyebrow::before,.ba-sec .eyebrow::before,.urgent .eyebrow::before,
+.money .eyebrow::before,.tech .eyebrow::before,.insight .eyebrow::before,
+.team .eyebrow::before,.local .eyebrow::before,.faq .eyebrow::before,
+.book .eyebrow::before,.roster .eyebrow::before,.eyebrow::before{
+  content:'';width:26px;height:1px;background:var(--vd-gold-deep);flex:0 0 auto;
+}
+.urgent .eyebrow--gold::before,.insight .eyebrow--gold::before,
+.book .eyebrow--gold::before,.roster .eyebrow--gold::before{background:var(--vd-gold)}
+
+/* ---- The social rail was seven small grey squares stacked in a column, which is
+   the cheapest-looking element on the page. Glass, rounded, and it grows a gold
+   edge on hover. */
+/* 🔴 DARK GLASS, NOT LIGHT GLASS — AND THE REASON IS A CONTRAST FAILURE THE
+   DIAGONAL SCRIM CREATED. My first pass used a light frosted chip
+   (rgba(255,255,255,.08)). That was fine under the OLD flat scrim, which darkened
+   the whole frame evenly. The new directional scrim deliberately opens up past
+   62% of the width — which is exactly where this rail lives — so at 1920 the top
+   four icons ended up as gold-on-a-white-wall, visibly washed out.
+   An icon is the ONLY thing identifying each of these links, so it is a meaningful
+   graphic and owes 3:1 under WCAG 1.4.11; gold on a bright wall does not come
+   close. Dark glass carries its own ground with it and is therefore legible over
+   ANY frame of the video, which a translucent light chip can never guarantee.
+   ▶ The general shape, worth keeping: improving one thing (the scrim) moved the
+   goalposts for something that was already passing. A change to a BACKDROP
+   silently re-opens every contrast decision made against it. */
+.hero__social a{
+  width:38px;height:38px;border-radius:var(--r-1);
+  background:rgba(18,16,14,.62);
+  color:var(--vd-gold-light);
+  border-color:rgba(232,207,164,.34);
+  -webkit-backdrop-filter:blur(10px) saturate(120%);backdrop-filter:blur(10px) saturate(120%);
+  box-shadow:0 6px 18px -10px rgba(0,0,0,.8);
+  transition:color 220ms var(--ease),border-color 220ms var(--ease),
+             background-color 220ms var(--ease),transform 220ms var(--ease);
+}
+.hero__social a:hover{
+  background:rgba(18,16,14,.86);border-color:var(--vd-gold);color:var(--vd-white);
+  transform:translateX(-3px);
+}
+@media (prefers-reduced-motion:reduce){.hero__social a{transition:none}}
+
+/* ---- Ink chips (the rating badges) get a corner and a shadow so they read as
+   pressed metal rather than a highlighter swipe. */
+.calm p.calm__proof,.proof__count{
+  border-radius:var(--r-1);box-shadow:var(--sh-2);
+  background:linear-gradient(160deg,#2c2c2c,#1c1c1c);
+}
+
+/* ---- Step numerals: from a flat ink disc to a struck medal. */
+.steps__n{
+  background:linear-gradient(160deg,#33322f,#1a1a1a);
+  box-shadow:var(--sh-2),inset 0 1px 0 rgba(255,255,255,.10);
+  border:1px solid rgba(220,187,139,.22);
+}
+
+/* ============================================================================
+   SWEEP 4 · RHYTHM & TYPE — air, scale, and a proper measure
+   ============================================================================ */
+
+/* Headlines were capped at 44px on a 1100px measure. On a 1280px measure at 1920
+   that is small enough to read as a subheading. The ceiling rises and the tracking
+   tightens, which is what separates an editorial headline from a UI label. */
+.proof h2,.ba-sec h2,.money h2,.tech h2,.team h2,.local h2,.faq h2,
+.urgent h2,.insight h2,.book h2,.lede h2,.calm h2,.roster h2,
+.steps h2,.cond h2,.edu h2,.sec-h2{
+  font-size:clamp(30px,4.4vw,52px);
+  line-height:1.1;letter-spacing:-.018em;
+}
+.hero h1{font-size:clamp(36px,5.6vw,62px);letter-spacing:-.022em;line-height:1.06}
+
+/* Section rhythm opens up. Premium pages are mostly empty; this one was running a
+   140px ceiling on a 1100px column, which is proportionally tight. */
+.proof .wrap,.ba-sec .wrap,.urgent .wrap,.money .wrap,.tech .wrap,
+.insight .wrap,.team .wrap,.local .wrap,.faq .wrap,.book .wrap{
+  padding-top:clamp(80px,12vw,164px);padding-bottom:clamp(80px,12vw,164px);
+}
+.calm .wrap,.pivot .wrap,.steps .wrap,.cond .wrap,.edu .wrap{
+  padding-top:clamp(80px,12vw,164px);padding-bottom:clamp(80px,12vw,164px);
+}
+.roster .wrap{padding-top:clamp(80px,12vw,164px);padding-bottom:clamp(80px,12vw,164px)}
+
+/* Card interiors get more room — cramped padding is the loudest cheap-tell there
+   is, and it costs nothing to fix. */
+.rev__card,.cond__card{padding:clamp(26px,3.2vw,38px)}
+.tier{padding:clamp(28px,3.4vw,38px)}
+.money__col--plan,.team__local,.book__form{padding:clamp(28px,3.4vw,40px)}
+
+/* Body copy sits slightly larger and looser. */
+.calm p,.lede p,.urgent p,.money__head p,.tech__head p,.team__head p,
+.ba-sec__head p,.book p,.insight p,.local__lede{line-height:1.75}
+
+/* ============================================================================
+   SWEEP 5 · STATE & MOTION — every interactive thing answers back
+   ============================================================================ */
+
+/* Focus: a single consistent two-tone ring. The build had eight different focus
+   treatments; a page whose focus states disagree with each other reads as
+   assembled by different hands. Gold core, dark halo, legible on ANY ground —
+   which was the actual defect the old white-on-white ring had. */
+.btn:focus-visible,
+.hero__social a:focus-visible,
+.foot__social a:focus-visible,
+.svc__card a:focus-visible,
+.rgroup a:focus-visible{
+  outline:3px solid var(--vd-gold);outline-offset:3px;
+  box-shadow:0 0 0 6px rgba(20,20,20,.55);
+}
+
+/* Links that underline should do it with a growing rule, not a static one. */
+.faq__a a,.ba-sec__more a{
+  background-image:linear-gradient(var(--vd-gold-deep),var(--vd-gold-deep));
+  background-repeat:no-repeat;background-position:0 100%;background-size:0% 2px;
+  border-bottom:0;padding-bottom:2px;
+  transition:background-size 320ms var(--ease);
+}
+.faq__a a:hover,.ba-sec__more a:hover{background-size:100% 2px}
+@media (prefers-reduced-motion:reduce){
+  .faq__a a,.ba-sec__more a{transition:none;background-size:100% 2px}
+}
+
+/* FAQ rows become separated cards rather than a table of rules. */
+.faq details{
+  border:1px solid var(--vd-hair);border-radius:var(--r-2);
+  background:var(--vd-card);box-shadow:var(--sh-1);
+  margin-bottom:12px;overflow:hidden;
+  transition:box-shadow 280ms var(--ease);
+}
+.faq details:last-child{border-bottom:1px solid var(--vd-hair)}
+.faq details[open]{box-shadow:var(--sh-2)}
+.faq summary{padding:clamp(20px,2.4vw,26px) 54px clamp(20px,2.4vw,26px) clamp(20px,2.4vw,26px)}
+.faq summary::after{right:22px}
+.faq__a{padding:0 clamp(20px,2.4vw,26px) clamp(22px,2.6vw,28px)}
+@media (prefers-reduced-motion:reduce){.faq details{transition:none}}
+
+/* The sticky bar becomes glass so it does not read as a second, competing header. */
+.stickybar{
+  background:linear-gradient(180deg,rgba(42,49,57,.94),rgba(34,40,47,.88));
+  -webkit-backdrop-filter:saturate(150%) blur(14px);backdrop-filter:saturate(150%) blur(14px);
+  box-shadow:0 18px 40px -30px rgba(0,0,0,.9);
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .stickybar{background:var(--vd-heading)}
+}
+
+/* Footer social + areas pick up the same corner language. */
+.foot__social a{border-radius:var(--r-1);background:rgba(255,255,255,.05);transition:all 220ms var(--ease)}
+.foot__social a:hover{background:rgba(220,187,139,.16);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.foot__social a{transition:none}}
+
+/* ============================================================================
+   FIX PASS — three defects found by walking the rendered page, not the markup
+   ============================================================================ */
+
+/* ---- (1) THE GROUND WAS TOO CLOSE TO THE CARDS. -----------------------------
+   White cards on #fdfbf8 paper is a 1.2% luminance step — the shadow was doing
+   100% of the separation work, so the in-house-plan panel and the review cards
+   read as floating text rather than as objects. Dropping the paper another two
+   steps costs nothing and lets every white surface on the page read as a surface.
+   Re-checked: body text #212121 on #f8f4ed measures 15.4:1, so the extra warmth
+   buys separation without spending any contrast. */
+:root{
+  --vd-paper:#f8f4ed;
+  --vd-paper-2:#f2ece2;
+}
+/* With more ground contrast the shadows can be softer AND more convincing. */
+.rev__card,.cond__card,.tier,.edu__card,.tech__card,
+.money__col--plan,.team__local,.book__form{box-shadow:var(--sh-3)}
+
+/* The inset gold rule was a fade-to-nothing 64px hairline and read as a printing
+   error at card width. Short, solid, and unmistakably deliberate. */
+.rev__card::before,.cond__card::before{
+  height:3px;width:44px;background:var(--vd-gold-deep);
+}
+
+/* ---- (2) THE PILLAR PHOTOGRAPH. --------------------------------------------
+   Sized like the icons, it was a 52px letterboxed smudge. As a photograph it gets
+   a photograph's treatment: wider, cropped to fill, and no cream backing plate
+   (the plate exists only so dark line-art is visible on the ink band — a photo
+   needs no help). */
+/* 🔴 AND THE FIRST FIX BROKE THE ROW — recorded because it is the more useful half.
+   Giving the photograph a photograph's height (96-124px) made it legible and left
+   the fourth card's heading sitting ~60px below the other three. I had fixed the
+   asset and broken the ROW, which is a worse defect than the one I started with:
+   a single illegible thumbnail reads as a bad image, four headings out of
+   alignment reads as a broken page.
+   ▶ The real answer was not to special-case the odd asset but to give all four the
+   SAME geometry and let each asset fill it its own way: one 56px full-width band,
+   icons CONTAINED on their cream plate (they are dark line-art and need the plate
+   to exist at all on this ink band), the photograph COVERING with no plate. Same
+   box, same baseline, two honest fit modes. */
+.pillar img{
+  width:100%;height:56px;object-fit:contain;
+  background:var(--vd-cream);padding:9px;
+  border-radius:var(--r-2);margin-bottom:.7rem;
+}
+.pillar img.pillar__photo{
+  object-fit:cover;background:none;padding:0;
+}
+
+/* ---- (3) THE CREDENTIAL ROW WAS FIVE DIFFERENT SHAPES. ----------------------
+   Two licensed marks at their native square, three typographic plates at three
+   different text lengths, all baseline-aligned — so a row meant to read as one
+   institutional block read as a pile. One plate geometry now governs all five:
+   same height, same white card, same corner, contents centred inside. The two
+   real marks sit INSIDE plates rather than beside them, which unifies the row
+   without touching the artwork — the licensed images are still the licensed
+   images, and the three text credentials are still text, exactly as the claim
+   gate requires. */
+/* 🔴 AND UNIFYING THE PLATES IMMEDIATELY PRODUCED AN ORPHAN — the same defect
+   class this build already fixed once for the review grid, in a different section,
+   by a different route. Five equal plates in a flex-wrap row broke 4 + 1, leaving a
+   single plate stranded on its own line under four.
+   Fixed arithmetically rather than by tuning widths: a SIX-track grid, each plate
+   spanning two, gives three per row; the two survivors are then explicitly placed
+   at tracks 2-3 and 4-5 so the second row is centred under the first instead of
+   left-hanging. Nothing here breaks if a sixth credential is ever added — the row
+   simply fills.
+   ▶ Worth naming: making five things uniform is exactly what CREATED the orphan.
+   Before, they were five different widths and packed tightly enough to fit. A
+   consistency fix that changes item widths always changes wrapping, and the wrap
+   is not visible in the rule you just wrote. */
+.accred__row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  align-items:stretch;gap:clamp(10px,1.4vw,16px);
+}
+/* Below 520 the same arithmetic runs on four tracks: two plates per row, and the
+   fifth centred at tracks 2-3 rather than left-hanging. Checked at 375 — without
+   this the mobile row breaks 2+2+1 with the orphan pinned to the left edge, which
+   is the identical defect the desktop grid was just fixed for. A wrapping fix
+   applied at one breakpoint is not a wrapping fix. */
+.accred__row > li{grid-column:span 2}
+.accred__row > li:nth-child(5){grid-column:2 / span 2}
+@media (min-width:520px){
+  .accred__row{grid-template-columns:repeat(6,1fr)}
+  .accred__row > li{grid-column:span 2}
+  .accred__row > li:nth-child(4){grid-column:2 / span 2}
+  .accred__row > li:nth-child(5){grid-column:4 / span 2}
+}
+.accred__row > li{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  min-height:clamp(64px,7vw,82px);
+  padding:10px 14px;
+  background:var(--vd-card);
+  border:1px solid var(--vd-hair);
+  border-radius:var(--r-2);
+  box-shadow:var(--sh-1);
+}
+.accred__row img{height:clamp(40px,4.4vw,52px);width:auto;border-radius:4px}
+/* ⚠ ONLY the properties the `.accred__row > li` rule does NOT set are listed here.
+   That rule is (0,1,1) and this class is (0,1,0), so any border/background/padding
+   written here would be DEAD CODE that reads as if it were doing something — the
+   exact shape of the six specificity defects already recorded in this file. The
+   plate geometry belongs to the row rule; only the type belongs to the class. */
+.accred__type{font-size:11.5px;line-height:1.35;max-width:16ch}
+.accred__quote,.quote,.lede__quote{border-left-color:var(--vd-gold-deep)}
+
+/* ============================================================================
+   SPECIFICITY AUDIT — five MORE instances of this build's oldest defect class
+   ============================================================================
+   🔴 This file already carries SIX recorded instances of the same failure: a
+   section-scoped element rule `.section p` at (0,1,1) silently beating a BEM
+   component class at (0,1,0). Each was found one at a time, by eye, after it
+   shipped. So this pass stopped looking at renders and enumerated the cascade
+   instead — every classed <p> on the page, checked against every section-scoped
+   `p` rule that can reach it. That found FIVE more, none of which had ever
+   surfaced in a screenshot across three sessions of eyes-on review.
+
+     .lede__quote      lost to `.lede p`     -> the pull-quote, designed at 25px
+                                                Poppins 200 above a gold rule, was
+                                                rendering at 18px body ink with ZERO
+                                                top margin. It read as a caption.
+                                                That sentence is the best writing on
+                                                their site.
+     .insight__tip     lost to `.insight p`  -> 18px instead of 16px, top margin
+                                                overwritten
+     .book__privacy    lost to `.book p`     -> 12.5px fine print at 18px body size
+     .book__form-title lost to `.book p`     -> card title SHRANK, 20px -> 18px
+     .book__demo       lost to `.book p`     -> 13.5px notice at 18px
+
+   ▶ THE LESSON IS ABOUT METHOD, NOT ABOUT SPECIFICITY. Every one of these degrades
+   GRACEFULLY — slightly-wrong type still looks deliberate — which is exactly why
+   repeated eyes-on never caught them. A defect invisible to the eye can only be
+   caught by a reader who computes the cascade. Eyes-on is necessary and it is not
+   sufficient, and this build now has eleven instances proving it.
+   ▶ ROOT CAUSE, named so it can be fixed properly later: mixing `.section p`
+   element selectors with BEM component classes GUARANTEES this collision, because
+   the element rule always carries one more specificity point than the class. The
+   durable fix is to scope every section paragraph rule to its own copy column.
+   That is a wider refactor than a visual sweep should attempt mid-flight, so each
+   component is qualified here instead — the same remedy the previous six received,
+   and it is boarded as a real follow-up rather than pretended away. */
+.pivot .lede p.lede__quote{
+  font-size:clamp(19px,2.4vw,26px);line-height:1.4;font-weight:200;
+  color:var(--vd-heading);max-width:30rem;
+  margin:clamp(28px,3.4vw,38px) 0 0;
+}
+.insight p.insight__tip{font-size:16px;line-height:1.65;margin:clamp(24px,3vw,32px) 0 0}
+.book p.book__privacy{font-size:12.5px;line-height:1.6;color:var(--vd-muted);margin:clamp(14px,1.8vw,18px) 0 0}
+.book p.book__form-title{font-size:clamp(17px,2vw,20px);font-weight:700;color:var(--vd-heading);margin:0 0 clamp(18px,2.2vw,24px);line-height:1.3}
+.book p.book__demo{font-size:13.5px;line-height:1.55;font-weight:700;color:var(--vd-heading);margin:.9rem 0 0}
+
+/* Comparison tags pick up the shared corner language. */
+.ba__tag{border-radius:var(--r-1)}
+
+/* ---- BACKDROP-FILTER FALLBACKS, COMPLETED. ---------------------------------
+   🔴 Rung-1 found this: I wrote @supports guards for the header and the sticky
+   bar and then forgot the THREE elements that need them most — the hero proof
+   chips, the ghost CTA and the social rail all sit directly on moving video. On
+   an engine without backdrop-filter (older Firefox with the flag off, some
+   embedded webviews) a 6-10% white fill over video is not a chip, it is nothing:
+   the border floats with no plate behind it and the whole "glass" idea reads as a
+   rendering fault rather than a style.
+   ⚠ Text legibility was never at risk — the scrim carries it, and the region rig
+   measured 6.64:1 across the entire copy column independent of these fills. What
+   was at risk was the DESIGN degrading into something that looks broken. Opaque
+   fallbacks keep it looking deliberate everywhere. */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .hero__proof li{background:rgba(28,25,22,.72);border-color:rgba(255,255,255,.26)}
+  .btn--ghost{background:rgba(28,25,22,.62)}
+  .hero__social a{background:rgba(18,16,14,.82)}
+}
