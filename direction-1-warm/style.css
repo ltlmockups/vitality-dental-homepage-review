@@ -302,74 +302,40 @@ a.sr-only:focus{
 /* Belt: even if JS runs, CSS refuses to show the video under reduced motion. */
 @media (prefers-reduced-motion:reduce){.hero__video{display:none}}
 
-/* ---------- The distinctive element · the warm arc ----------
-   🔴 REBUILT after eyes-on. The first version was a WHITE stroke sitting inside the CREAM
-   section, clipped by overflow:hidden — white on cream is 1.09:1, so the signature element of
-   this direction was effectively invisible and half of it was cut off. The spec called for
-   CREAM ON INK and that is what this is now.
-
-   The cream section physically rises INTO the dark hero as an arc, which is the "opening its
-   arms" gesture the spec describes, and it is legible by construction: cream on ink is 13.38:1.
-   A gold-deep hairline draws along the crest on scroll (7.03:1 on ink — gold is legal on dark
-   and only on dark). */
+/* ---------- The divider · band + fillets + brand mark, ONE continuous cream form ----------
+   Del: "the hero logo doesn't feel like it is merged enough".
+   He is right, and the reason is geometric rather than cosmetic. A circle TANGENT to a straight
+   line meets it at a single point, and the eye reads a single point of contact as two shapes
+   touching — no amount of nudging the overlap fixes that, which is why the plinth version still
+   looked like a badge on a rule.
+   What reads as ONE form is a FILLET: a concave curve that leaves the band tangentially and
+   arrives at the circle tangentially, the way liquid meets liquid. So the band, both fillets and
+   the disc are now a SINGLE PATH with a SINGLE fill. There is no seam because there is no join.
+   The flanks are a separate full-width band underneath in the same cream: the merge zone keeps a
+   fixed aspect (so the disc can never squash), the band carries the infinite width, and they
+   overlap. Previous generations kept the shape in a stretching SVG, which is exactly what made
+   the plinth drift out of register at widths I had not tuned. */
 .pivot{position:relative;background:var(--vd-cream)}
-/* 🔴 DIVIDER v5 — THE WAVE CARRIES THE BRAND MARK.
-   v1 hump · v2 sweep · v3 gradient stroke · v4 straight cut. All four were DECORATION, which is
-   why none of them landed: a divider that only separates two colours has no reason to be
-   interesting. This one does something — the cream section rises as a wave and the practice's
-   own implant mark rises out of it, cut into the cream so the hero film plays through the tooth.
-   TWO ELEMENTS, ON PURPOSE. The wave must stretch to any viewport width, and that same stretch
-   would squash a disc into an ellipse. So the wave stretches, the mark does not, and they
-   OVERLAP in the same cream with no stroke between them — which is what makes them read as one
-   continuous form rather than a badge sitting on a curve. */
 .pivot__cut{
-  --mark:clamp(112px,17.5vw,268px);      /* the single source of truth for mark + plinth */
   position:absolute;left:0;right:0;top:0;
-  transform:translateY(-99%);          /* 99% not 100%: kills the sub-pixel seam line */
-  height:clamp(80px,12vw,180px);
+  transform:translateY(-99%);           /* 99% not 100%: kills the sub-pixel seam line */
+  height:clamp(92px,13vw,210px);
   pointer-events:none;z-index:2;
 }
-.pivot__wave{position:absolute;inset:0;width:100%;height:100%;display:block}
-.pivot__wave-fill{fill:var(--vd-cream)}
-/* The plinth is gone: it existed only to submerge the logo’s lower half, and Del wants the
-   whole mark visible. With the disc sitting fully above the flat edge it would just be a cream
-   block sticking up behind it. */
-.pivot__plinth{display:none}
-/* The two upper strata are the same cream stepped back in opacity, so the section reads as
-   layers lifting off the film instead of one hard cut. Straight edges throughout. */
-.pivot__wave-lay{fill:var(--vd-cream)}
-.pivot__wave-lay--a{opacity:.30}
-.pivot__wave-lay--b{opacity:.62}
-/* The plinth exists only to seat the mark, so both switch at the SAME breakpoint. */
-.wv--mob{display:none}
-@media (max-width:899px){ .wv--desk{display:none} .wv--mob{display:block} }
-/* Sits ON the crest of the wave (which peaks around 75% of the width) and overlaps it, so the
-   disc and the wave fuse. `bottom` is a percentage of the cut height, so the overlap holds as
-   the divider scales. */
-/* MEASURED, then corrected: at bottom:30% the disc was almost entirely swallowed by the wave —
-   only its top arc cleared the crest, so the mark read as a bump rather than as the brand. The
-   disc now sits mostly ABOVE the crest with roughly its lower quarter submerged, which is the
-   proportion that still fuses the two shapes while leaving the implant fully legible on the film. */
-.pivot__mark{
-  position:absolute;left:75%;bottom:46%;
-  transform:translateX(-50%);
-  width:var(--mark);height:auto;aspect-ratio:1;
-  display:block;overflow:visible;
+/* The flanks. Height is the band's share of the 440x210 merge box (176/210 = 83.8% down),
+   so the two are the same line by construction rather than by a number I tuned by eye. */
+.pivot__band{
+  position:absolute;left:0;right:0;bottom:0;
+  height:calc(100% * (210 - 176) / 210);
+  background:var(--vd-cream);
 }
-
-/* 🔴 CAUGHT BY THE PAINT-ORDER PROBE, one turn after building it. At 375 the hero CTAs go
-   full-width and stack, so they run straight under the mark: elementFromPoint returned
-   .btn--ghost at three of five sample points — the mark was being painted OVER, which is the
-   exact defect class that produced the sliced photo. A box-overlap test alone would have
-   called this 'a collision'; the paint probe said WHICH element was winning and therefore that
-   the mark was the thing being lost.
-   The mark needs horizontal room the phone layout does not have, so below 900px the wave
-   carries the divider by itself. Nothing is hidden that the visitor needs — the mark is brand
-   texture, not content, and it returns the moment there is space for it. */
-@media (max-width:899px){ .pivot__mark{display:none} }
-
-/* L-341: nothing here depends on JavaScript, so there is no reveal to fail and nothing to
-   render blank. The divider is complete the moment the CSS applies. */
+.pivot__merge{
+  position:absolute;left:75%;bottom:0;transform:translateX(-50%);
+  height:100%;width:auto;aspect-ratio:440/210;display:block;overflow:visible;
+}
+/* Below 900px the hero CTAs go full width and occupy the mark's space, so the band carries the
+   divider alone. Caught originally by the paint-order probe, kept here. */
+@media (max-width:899px){ .pivot__merge{display:none} }
 
 /* ---------- S3 · Problem — one idea, lots of air (B13) ---------- */
 .pivot .wrap{position:relative;z-index:1;padding-top:clamp(72px,11vw,140px);padding-bottom:clamp(72px,11vw,140px)}
@@ -657,7 +623,8 @@ html{scroll-padding-top:120px}
 @media (min-width:1040px){
   .rev{grid-template-columns:repeat(6,1fr)}
   .rev__card{grid-column:span 2}
-  .rev__card:nth-child(4),.rev__card:nth-child(5){grid-column:span 3}
+  /* seven reviews: 3 + 3 + 1, the odd one centred rather than left-hanging */
+  .rev__card:nth-child(7):last-child{grid-column:3 / span 2}
 }
 .rev__card{
   border:1px solid var(--vd-line);border-top:3px solid var(--vd-gold-deep);
@@ -1028,19 +995,7 @@ html{scroll-padding-top:120px}
 @media (min-width:820px){.ba-grid{grid-template-columns:repeat(3,1fr)}}
 
 /* ---------- Pricing tiers now carry their offer photography ---------- */
-.tier__img{width:100%;aspect-ratio:16/9;object-fit:cover;margin:0 0 clamp(16px,2vw,20px)}
 
-/* ---------- The map placeholder ---------- */
-.local__map{position:relative}
-.local__map img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
-.local__map-btn{
-  position:absolute;left:16px;bottom:16px;
-  background:var(--vd-gold);color:var(--vd-cta-ink);   /* 9.16:1 */
-  font:700 14px/1 Poppins,system-ui,sans-serif;letter-spacing:.01em;
-  padding:12px 18px;text-decoration:none;
-}
-.local__map-btn:hover{background:var(--vd-gold-light)}
-.local__map-btn:focus-visible{outline:3px solid var(--vd-ink);outline-offset:3px}
 /* Three children now share the local grid: the directions column spans both rows on the left,
    the map and the address card stack on the right. */
 @media (min-width:900px){
