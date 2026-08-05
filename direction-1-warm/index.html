@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Dentist in Plano, TX | Vitality Dental</title>
+<meta name="description" content="A family dental practice on Coit Road in Plano, TX. Cleanings, fillings, braces and implants for every age, in one office. Book an appointment.">
+<link rel="canonical" href="https://vitalitydentaldfw.com/">
+<!-- Their own favicon. Its absence was the only console error on the page and the media audit
+     listed it as a live asset we had not carried. Small, but it was a real miss. -->
+<link rel="icon" href="../shared/img/favicon.png" type="image/png">
+
+<!-- Open Graph. The image is the client's own reception photograph, not a generated one. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vitalitydentaldfw.com/">
+<meta property="og:site_name" content="Vitality Dental">
+<meta property="og:title" content="Family Dentist in Plano, TX | Vitality Dental">
+<meta property="og:description" content="A family dental practice on Coit Road in Plano, TX. Cleanings, fillings, braces and implants for every age, in one office.">
+<meta property="og:image" content="https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-office-22-1536x1024.webp">
+<meta property="og:image:width" content="1536">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:alt" content="The reception area at Vitality Dental in Plano, Texas">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Structured data. Their live homepage already carries Dentist + FAQPage (26 of their 31
+     pages do not), so this is a template rollout rather than authoring from zero.
+     ⛔ NO aggregateRating NODE, DELIBERATELY. Three live sources disagree on the review count
+     (Google panel 1,263 · their own widget 1,025 · their H2 "over a 1000") and their existing
+     schema carries no rating to arbitrate. A rating in structured data is a machine-readable
+     claim to Google; publishing one we cannot substantiate is the worst place to guess.
+     The FAQ entities mirror the four questions ACTUALLY on the page — the frozen
+     language-capability question is absent here too, so the markup and the page agree. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Dentist",
+      "@id": "https://vitalitydentaldfw.com/#practice",
+      "name": "Vitality Dental",
+      "url": "https://vitalitydentaldfw.com/",
+      "telephone": "+1-972-964-3800",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1220 Coit Rd #106",
+        "addressLocality": "Plano",
+        "addressRegion": "TX",
+        "postalCode": "75075",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "07:00",
+        "closes": "15:00"
+      }],
+      "areaServed": [
+        {"@type":"City","name":"Plano","addressRegion":"TX"},
+        {"@type":"Place","name":"West Plano"},
+        {"@type":"Place","name":"East Plano"},
+        {"@type":"City","name":"Parker","addressRegion":"TX"},
+        {"@type":"Place","name":"Willow Bend"},
+        {"@type":"Place","name":"Legacy West"}
+      ],
+      "availableService": [
+        {"@type":"MedicalProcedure","name":"Preventive Dentistry"},
+        {"@type":"MedicalProcedure","name":"Emergency Dentistry"},
+        {"@type":"MedicalProcedure","name":"Sedation Dentistry"},
+        {"@type":"MedicalProcedure","name":"Dental Implants"},
+        {"@type":"MedicalProcedure","name":"All on 4 Implants"},
+        {"@type":"MedicalProcedure","name":"Invisalign"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vitalitydentaldfw.com/#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"Do you offer sedation for anxious patients?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. We offer different levels of sedation to help our patients feel comfortable and relaxed, including nitrous oxide (laughing gas) and oral sedation."}},
+        {"@type":"Question","name":"How much does it cost to visit a dentist in Plano without insurance?","acceptedAnswer":{"@type":"Answer","text":"Costs vary depending on the service, and our in-house adult wellness plan is $34 a month and the child plan is $29. We offer complimentary consultations where we can give you transparent pricing for what you actually need."}},
+        {"@type":"Question","name":"Do you speak languages other than English?","acceptedAnswer":{"@type":"Answer","text":"Yes! At Vitality Dental, we speak your language, including English, Japanese, Chinese, and Spanish. Dr. Kung is fluent in Mandarin."}},
+        {"@type":"Question","name":"What should I do if I have a dental emergency on the weekend?","acceptedAnswer":{"@type":"Answer","text":"Call our office at (972) 964-3800. We prioritize emergency cases and offer same-day appointments whenever possible."}},
+        {"@type":"Question","name":"Are you accepting new patients?","acceptedAnswer":{"@type":"Answer","text":"Yes. New patients and emergency appointments are always welcome, with short wait times and a family-like atmosphere."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="sr-only" href="#main">Skip to main content</a>
+
+<!-- S0 · Utility bar — WMG #93, above the nav.
+     Carries the TWO above-the-fold messages the live homepage runs and this mockup had
+     dropped: same-day emergency (their largest search cluster, 11,461 impressions) AND
+     "No Insurance? No Problem", which is their single strongest differentiator and runs as a
+     header marquee on the real site. It had survived here only as a weak nav link. -->
+<div class="emerg">
+  <div class="wrap">
+    <span><b>Dental emergency?</b> Same-day appointments available.</span>
+    <span class="emerg__sep" aria-hidden="true">·</span>
+    <!-- The trailing clause is now WRAPPED. It used to be a bare text node after </b>, and the
+         responsive rule that was supposed to drop it read `.emerg__ins b + *` — an ELEMENT
+         sibling selector, which matches nothing when the sibling is text. So nothing was ever
+         dropped, the bar overflowed its nowrap container, and `overflow:hidden` silently sliced
+         the phone number off at 375. The rule was never firing; it only looked like it was. -->
+    <span class="emerg__ins"><b>No insurance? No problem.</b> <span class="emerg__ins-tail">Adult in-house plan $34/mo.</span></span>
+    <a href="tel:+19729643800"><span class="emerg__call">Call </span>(972)&nbsp;964-3800</a>
+  </div>
+</div>
+
+<!-- S1 · Header -->
+<header class="site-head">
+  <div class="wrap">
+    <div class="brand">
+      <!-- 886x128 is the file's REAL size, read off the PNG header. The previous 150x38 was
+           invented, a 43% aspect lie against a 2% gate, and it reserved the wrong box. -->
+      <a href="#main"><img src="../shared/img/logo-white.png" alt="Vitality Dental" width="886" height="128"></a>
+    </div>
+    <!-- The client's REAL top-level menu, read from the live nav capture — not an invented one.
+         My previous set (Services / Our Dentists / No Insurance?) was both wrong and redundant:
+         "No Insurance?" already runs in the utility bar directly above.
+         Del: "you can have them unlinked" — these are labels for the mockup; the dropdowns
+         behind them (10 items under Meet Us, 14 under Services, 3 under Financial) are real on
+         their site and get wired at build. -->
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-link nav-link--home" href="#main">Home</a>
+      <a class="nav-link" href="#calm">Meet Us</a>
+      <a class="nav-link" href="#services">Services</a>
+      <a class="nav-link" href="#plans">Financial</a>
+      <a class="nav-link nav-link--area" href="#local">Areas We Serve</a>
+      <a class="nav-link" href="#reviews">Patient Reviews</a>
+      <a class="tel nav-link" href="tel:+19729643800">(972)&nbsp;964-3800</a>
+      <a class="btn btn--primary" href="#book"><span class="btn__long">Book an Appointment</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- S1b · Sticky desktop CTA bar (wireframe component #3). Desktop only: below 900px the
+     nav already collapses to a persistent phone link, and a second fixed bar there would
+     cover content on a short phone viewport. Hidden until the hero has scrolled past, so it
+     never competes with the hero's own CTAs. `hidden` at rest means a JS failure leaves it
+     absent rather than stuck across the page. -->
+<div class="stickybar" id="stickybar" hidden>
+  <div class="wrap">
+    <span class="stickybar__name">Vitality Dental &middot; Plano</span>
+    <span class="stickybar__msg">No insurance? Adult in-house plan $34/mo.</span>
+    <a class="stickybar__tel" href="tel:+19729643800">Call (972)&nbsp;964-3800</a>
+    <a class="btn btn--primary" href="#book">Book an Appointment</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- S2 · HERO — the Phase A3 video spine, reused verbatim -->
+  <section class="hero">
+    <video class="hero__video" poster="../shared/video/hero-poster-long.webp"
+           muted loop playsinline aria-hidden="true" tabindex="-1"></video>
+    <div class="hero__scrim"></div>
+
+    <div class="wrap">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Family Dentistry in West Plano</p>
+        <h1>A Family Dentist in Plano, TX<br><span class="em">Where You Can Finally Relax</span></h1>
+        <!-- Their own positioning sentence, verbatim from the live page. It was missing. -->
+        <p class="hero__sub">A boutique, high-touch practice on Coit Road. Cleanings, fillings, braces and implants for every age, in one office.</p>
+        <ul class="hero__proof">
+          <li>
+            <span class="stars" role="img" aria-label="Rated 4.9 out of 5">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+            </span>
+            <b>4.9</b> &middot; over 1,000 Google reviews
+          </li>
+          <li>Accepting new patients</li>
+          <!-- A fourth item so the strip balances 2+2 instead of orphaning the hours on their
+               own line. Pairing is deliberate: trust on top, practical underneath. "Free
+               parking out front" is their own copy ("plenty of free surface parking right in
+               front of Suite 106") and it removes a real friction point. -->
+          <li>Mon&ndash;Fri, 7AM&ndash;3PM</li>
+          <li>Free parking out front</li>
+        </ul>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#book">Book an Appointment</a>
+          <a class="btn btn--ghost" href="tel:+19729643800">Call (972)&nbsp;964-3800</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- The 7 channels the live homepage carries above the fold. Placed on the right, in the
+         space the copy column vacated, rather than crowding the one-line utility bar. -->
+    <nav class="hero__social" aria-label="Vitality Dental on social media">
+      <a href="https://www.instagram.com/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.2A6.6 6.6 0 1 0 18.6 12 6.6 6.6 0 0 0 12 5.4zm0 10.9A4.3 4.3 0 1 1 16.3 12 4.3 4.3 0 0 1 12 16.3zm6.9-11.1a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5z"/></svg></a>
+      <a href="https://www.facebook.com/" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+      <a href="https://www.yelp.com/" aria-label="Yelp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3.2v8.3c0 .6-.7 1-1.2.6L5.2 9.3c-.4-.3-.5-.9-.2-1.3A9.9 9.9 0 0 1 9.8 2.4c.6-.2 1.2.2 1.2.8zm1.6 10.5l3.9-1.2c.6-.2 1.2.3 1.1.9a9.8 9.8 0 0 1-1.7 4.1c-.3.5-1 .5-1.3 0l-2.4-3.2c-.3-.4-.1-1 .4-1.1zm-1.9 1.7l.1 4.1c0 .6-.6 1.1-1.2.9a9.8 9.8 0 0 1-3.7-2.2c-.4-.4-.3-1.1.2-1.3l3.6-1.9c.5-.3 1 .1 1 .4zM9.5 12.6L5.7 14c-.6.2-1.2-.3-1.1-.9a9.8 9.8 0 0 1 .5-2.1c.2-.5.8-.7 1.2-.4l3.3 1.1c.5.2.5.8-.1.9zm6.8-1.3l-3.7.4c-.6.1-1-.6-.7-1.1l2.4-4.1c.3-.5 1-.6 1.4-.1a9.8 9.8 0 0 1 1.9 3.6c.2.6-.3 1.2-1.3 1.3z"/></svg></a>
+      <a href="https://www.youtube.com/" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg></a>
+      <a href="https://www.linkedin.com/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.9 21H3.4V9h3.5zM5.1 7.4A2 2 0 1 1 7.2 5.4a2 2 0 0 1-2.1 2zM21 21h-3.5v-5.9c0-1.4 0-3.2-2-3.2s-2.2 1.5-2.2 3.1V21H9.8V9h3.3v1.6h.1a3.7 3.7 0 0 1 3.3-1.8c3.5 0 4.2 2.3 4.2 5.3z"/></svg></a>
+      <a href="https://x.com/" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 3h3.2l-7 8 8.3 10h-6.5l-5-6.1-5.8 6.1H1.5l7.5-8.6L1 3h6.6l4.6 5.6zm-1.1 16.1h1.8L7.7 4.8H5.8z"/></svg></a>
+      <a href="https://www.tiktok.com/" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.4a6.4 6.4 0 0 1-3.8-1.2v6.9a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 .8.1v2.9a2.9 2.9 0 1 0 2 2.8V2h2.9a3.6 3.6 0 0 0 3.9 3.5z"/></svg></a>
+    </nav>
+
+    <!-- Icon-only, invisible at rest, appears on hover or keyboard focus. The visible pill is
+         gone; the WCAG 2.2.2 mechanism is not, because it cannot be. -->
+    <button type="button" id="motionToggle" class="hero__motion-toggle" hidden aria-pressed="false">
+      <span class="glyph" aria-hidden="true">❚❚</span><span class="label" id="motionToggleLabel">Pause background video</span>
+    </button>
+  </section>
+
+  <!-- S3 · PROBLEM — one idea per screen, with the distinctive arc at the pivot -->
+  <section class="pivot" id="pivot">
+    <!-- 🔴 v4 — THE WAVE IS GONE. Del: "the divider under the hero is not impressive. either
+         fix that or make a regular flat divider."
+         He is right, and naming WHY matters more than the replacement. The shape was a stock
+         wave. Every template site ships one, which is precisely what makes it read cheap: it is
+         decoration doing an impression of craft. Softening it through three versions was
+         polishing the wrong object. A flat rule would have been honest but inert.
+         THE FIX IS GEOMETRY, NOT ORNAMENT. A single straight asymmetric cut — a shallow 3.7°
+         rise across the full width — reads architectural rather than decorative, and it belongs
+         to the register this direction is built on (WMG #46 sober-healthcare: restrained
+         geometry, no flourish). The gold hairline still draws along it on scroll, emerging from
+         and dissolving into nothing at both ends so the line has no visible start or stop, and
+         the second "echo" stroke is deleted because it was noise pretending to be depth.
+         Straight lines are harder to get right than curves and they never look like a plugin. -->
+    <!-- ⚠ THE LINE SITS ABOVE THE FILL EDGE, DELIBERATELY, AND THE FIRST VERSION DID NOT.
+         Drawn exactly ON the boundary, a 1.5px gold stroke has half its width over cream —
+         where gold measures 1.5:1 and is invisible — so only a sub-pixel sliver survived on the
+         dark side and the line I had "verified as drawn" could not be seen at all. The computed
+         dash offset said 0 and the render said nothing. Offsetting the fill 3 units below the
+         stroke puts the whole line on the ink side, where gold is 8.84:1 and legal. -->
+    <!-- 🔴 v5 — WAVE + BRAND MARK, ONE CONTINUOUS CREAM FORM (Del: "the diagonal doesn't work,
+         try a wavy pattern… the logo icon should be part of that flesh/cream background of the
+         second section… like drawing the icon on top of the video in cream, seamlessly merging
+         with the new wavy divider").
+         v1 hump · v2 sweep · v3 gradient stroke · v4 straight cut — four attempts at DECORATION.
+         This is the first version that means anything: the cream section rises as a wave and the
+         practice's own implant mark rises out of it, so the divider now carries the brand instead
+         of ornamenting it.
+         HOW IT IS BUILT, and why it is two elements rather than one: the wave must stretch to any
+         viewport width (preserveAspectRatio="none"), and that same stretch would squash the disc
+         into an ellipse. So the wave stretches and the mark keeps its aspect, positioned to sit
+         ON the crest and overlap it — same cream, overlapping edges, no seam, reads as one shape.
+         THE MARK IS A KNOCKOUT, NOT A DRAWING: the disc is cream and the implant is cut OUT of
+         it, so the hero video plays through the tooth. That is what makes it feel carved out of
+         the section rather than pasted on top of the film.
+         Traced from the client's own favicon.png at 512x512 — their mark, not an approximation
+         of it, and no generated imagery anywhere near this. -->
+    <div class="pivot__cut" aria-hidden="true">
+      <svg class="pivot__wave" viewBox="0 0 1400 200" focusable="false" preserveAspectRatio="none">
+        <g class="wv wv--desk">
+          <path class="pivot__wave-fill" d="M0,96 L1400,96 L1400,200 L0,200 Z"></path>
+        </g>
+        <g class="wv wv--mob">
+          <path class="pivot__wave-fill" d="M0,96 L1400,96 L1400,200 L0,200 Z"></path>
+        </g>
+      </svg>
+
+      <span class="pivot__plinth"></span>
+      <svg class="pivot__mark" viewBox="0 0 100 100" focusable="false">
+        <defs>
+          <mask id="vdMark">
+            <!-- 🔴 RE-TRACED FROM favicon.png AT 512px (Del: "the logo icon is not complete...
+                           bottom part is not there, can you check the original logo icon"). He is right.
+                           My first trace ENDED THE POST EARLY at 83% of the disc and used flat horizontal
+                           thread bars. In the real mark the post runs almost to the BOTTOM EDGE of the
+                           disc and finishes in a distinct narrow tip, and the threads are DIAGONAL slots
+                           slanting up to the right. Measured off the 512px original and divided by 5.12:
+                           crown 115-275, collar 283-330, post 340-455, tip 460-492. -->
+                      <circle cx="50" cy="50" r="49" fill="#fff"></circle>
+                      <circle cx="50" cy="50" r="44.5" fill="none" stroke="#000" stroke-width="2.6"></circle>
+                      <g transform="translate(50,50) scale(0.93) translate(-50,-50)">
+            <!-- crown: two cusps, dip between, waisting into the collar -->
+                      <path fill="#000" d="M28,42 C28,27 34,20.5 41,23 C44.5,24.3 47.5,27 50,27.8 C52.5,27 55.5,24.3 59,23 C66,20.5 72,27 72,42 C72,48.5 70.5,51.5 69,53.7 L31,53.7 C29.5,51.5 28,48.5 28,42 Z"></path>
+                      <!-- collar band -->
+                      <path fill="#000" d="M36,55.6 H64 V64.5 H36 Z"></path>
+                      <!-- tapering post -->
+                      <path fill="#000" d="M38,66.4 H62 L58.6,88.9 H41.4 Z"></path>
+                      <!-- THE TIP, which was missing entirely -->
+                      <path fill="#000" d="M43.9,90 H56.1 L54.2,96.1 H45.8 Z"></path>
+                      <!-- diagonal thread slots (cream, cutting back across the post) -->
+                      <path fill="#fff" d="M38.5,73.4 L61.5,69.2 L61.1,72.3 L38.2,76.5 Z"></path>
+                      <path fill="#fff" d="M39.7,81.2 L59.9,77 L59.5,80.1 L39.4,84.3 Z"></path>
+            </g>
+                    </mask>
+        </defs>
+        <rect x="0" y="0" width="100" height="100" fill="var(--vd-cream)" mask="url(#vdMark)"></rect>
+      </svg>
+    </div>
+    <!-- 🔴 REBUILT — Del: "too plain."
+         It was one column of type in a wide cream field with the right half empty, which is not
+         minimalism, it is an unfinished layout wearing minimalism's clothes. B13 earns its space
+         through COMPOSITION, and there was none: nothing anchored the eye, nothing used the
+         diagonal directly above it, and the client's own best line was three sections away.
+         What changed: a real two-column composition; their patient-voice question promoted to a
+         pull-quote (it is the most human sentence on their site and it was going unused); their
+         own photograph rising INTO the diagonal cut so the divider stops being decoration and
+         starts holding the layout together; and a gold rule tying the column to the hairline
+         above it. Every word here is theirs, verbatim or lightly tightened. -->
+    <div class="wrap">
+      <div class="pivot__grid">
+        <div class="lede reveal">
+          <p class="eyebrow">The real reason</p>
+          <h2>Most people put off the dentist.<br><b>Usually it is not about teeth.</b></h2>
+          <p>If the thought of visiting the dentist makes your heart race, you are not alone, and at Vitality Dental you have absolutely nothing to be ashamed of.</p>
+          <p>You deserve a healthy smile, regardless of how long it has been since your last visit.</p>
+          <p class="lede__quote">&ldquo;Is it possible to actually enjoy the dentist?&rdquo;<span>Our patients say yes.</span></p>
+        </div>
+
+        <figure class="pivot__media reveal">
+          <img src="../shared/img/office-reception.webp" width="1536" height="1024"
+               alt="The reception area at Vitality Dental on Coit Road in Plano" loading="lazy" decoding="async">
+          <figcaption>A boutique, high-touch practice on Coit&nbsp;Road, built to be the antidote to the corporate dental clinic.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WP03 §2 · ACCREDITATION + REVIEW STRIP — the first PROOF hit. Pattern #41 visual-trust-badges.
+       Added 2026-08-04 after the Hub relayed WP03 and the two real dental references became
+       reachable. This section is in BOTH observed dental designs and in NEITHER of the generic
+       local-business blueprints I had been building from — exactly the class of omission a
+       non-dental skeleton cannot surface.
+       ⚠ CLAIM GATE — the honest resolution, not the convenient one. WP03 says "actual brand marks,
+       never text". I hold real logo files for only TWO of the five affiliations their own homepage
+       asserts (FAGD + ICOI, both still served from their site today). The other three had their
+       logo files REMOVED from the live homepage, so I have no licensed artwork. Redrawing an
+       association's mark is worse than setting it in type, so two ship as marks and three ship as
+       typographic credentials, flagged for the client's proof pass. Nothing is claimed here that
+       their own site does not claim. -->
+  <section class="accred" aria-labelledby="accred-h">
+    <div class="wrap">
+      <h2 id="accred-h" class="sr-only">Accreditations and a patient review</h2>
+      <div class="accred__grid">
+        <figure class="accred__quote reveal">
+          <p class="accred__stars" role="img" aria-label="Rated 5 out of 5 by this patient">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+          </p>
+          <blockquote>I came in with an extreme fear and I&rsquo;ve gone from getting laughing gas to just gel on gums for cleaning. Everyone from front office to dental tech to doctors are absolutely amazing.</blockquote>
+          <figcaption>Michelle Moorman <span>Google review</span></figcaption>
+        </figure>
+
+        <div class="accred__marks reveal">
+          <p class="accred__label">Credentials &amp; affiliations</p>
+          <ul class="accred__row">
+            <li><img src="../shared/img/cred-fagd.jpeg" width="225" height="225" alt="Fellow, Academy of General Dentistry" loading="lazy" decoding="async"></li>
+            <li><img src="../shared/img/cred-icoi-fellow.png" width="225" height="225" alt="Fellow, International Congress of Oral Implantologists" loading="lazy" decoding="async"></li>
+            <li class="accred__type">American Dental&nbsp;Association</li>
+            <li class="accred__type">Texas Dental&nbsp;Association</li>
+            <li class="accred__type">American Academy of Facial&nbsp;Esthetics</li>
+          </ul>
+          <p class="accred__note">CareCredit and flexible payment options. Most major PPO plans accepted.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WP03 §3 · PROCESS — "What happens at your first visit?" Pattern #299.
+       On a CURVED connector, which WP03 names as the observed dental signature: a straight rail
+       reads corporate, the curve reads clinical-but-warm. Six steps, staggered reveal.
+       This answers the single most common unasked question an anxious patient has, which is the
+       entire thesis of this direction — and it was missing.
+       ⛔ Deliberately NO clinical or diagnostic language. This describes LOGISTICS, not treatment. -->
+  <section class="steps" aria-labelledby="steps-h">
+    <div class="wrap">
+      <div class="steps__head reveal">
+        <p class="eyebrow">Your first visit</p>
+        <h2 id="steps-h">What actually happens <b>when you come in</b></h2>
+        <p>No surprises and no lecture. Here is the whole visit, start to finish.</p>
+      </div>
+
+      <div class="steps__rail">
+        <!-- Decorative connector. Sits behind the numbers and is hidden once the list stops
+             running horizontally, because a curve through a vertical stack is just a stray line. -->
+        <svg class="steps__path" viewBox="0 0 1200 44" aria-hidden="true" focusable="false" preserveAspectRatio="none">
+          <path d="M42,30 C 240,8 420,8 620,22 C 820,36 1000,36 1158,13" fill="none"></path>
+        </svg>
+        <ol class="steps__list">
+          <li class="reveal"><span class="steps__n">1</span><h3>Book in a minute</h3><p>Call or book online. Tell us you are nervous and we note it before you arrive.</p></li>
+          <li class="reveal"><span class="steps__n">2</span><h3>We check your benefits</h3><p>We verify your insurance ahead of time, so the cost conversation happens before the chair.</p></li>
+          <li class="reveal"><span class="steps__n">3</span><h3>Arrive and settle</h3><p>Free parking right outside Suite&nbsp;106, short waits, and bring someone with you if you like.</p></li>
+          <li class="reveal"><span class="steps__n">4</span><h3>A proper look</h3><p>Digital X-rays, and a 3D scan where it helps, so you see exactly what we see.</p></li>
+          <li class="reveal"><span class="steps__n">5</span><h3>Options in plain English</h3><p>What we found, what it costs, and what happens if you wait. You decide, at your pace.</p></li>
+          <li class="reveal"><span class="steps__n">6</span><h3>Treat, or come back</h3><p>Same-day treatment if you want it, sedation if you need it, or a plan for another day.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 · REASSURANCE — the centre of gravity. Their own phobia copy, given room. -->
+  <section class="calm" id="calm" aria-labelledby="calm-h">
+    <div class="wrap">
+      <div class="calm__grid">
+        <div class="reveal">
+          <h2 id="calm-h">We cater to dental phobia.<br><b>This is a judgment-free zone.</b></h2>
+          <p>We offer multiple levels of sedation, from nitrous oxide to oral sedation, so a stressful procedure does not have to feel like one.</p>
+          <p>Whether you are a Plano Senior High parent needing a quick checkup, or you have been putting off a procedure for years, Dr.&nbsp;Andrew Kung and his team are ready to listen without judgment.</p>
+
+          <figure class="quote">
+            <blockquote>“If you’re afraid of visiting the dentist, you have absolutely nothing to be ashamed of. We are here to empower you, not lecture you.”</blockquote>
+            <figcaption>Dr. Andrew Kung</figcaption>
+          </figure>
+        </div>
+
+        <div class="calm__media reveal">
+          <img src="../shared/img/office-chair.webp" width="1536" height="1024"
+               alt="A treatment room at Vitality Dental in Plano, with natural light and wood detailing">
+          <p class="calm__proof">
+            <span class="stars" role="img" aria-label="Rated 4.9 out of 5">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+            </span>
+            <b>4.9</b> &middot; over 1,000 Google reviews
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 · EVERY AGE, ONE OFFICE — the dark spine section. All 14 service lines are theirs. -->
+  <section class="roster" id="services" aria-labelledby="services-h">
+    <div class="wrap">
+      <!-- Their own section heading, restored as the eyebrow. The parity pass caught that it
+           had been replaced wholesale by my line rather than kept alongside it. -->
+      <p class="eyebrow eyebrow--gold">Comprehensive services under one roof</p>
+      <h2 id="services-h">From your child’s first visit <b>to senior care</b></h2>
+      <p class="roster__intro">Stop driving all over North Texas for specialists. We handle complex care right here in West Plano.</p>
+
+      <!-- 🔴 REBUILT 2026-08-03 FROM A LIVE RE-FETCH. Del: "mostly images and videos missing…
+           if it is there, it automatically means we can use them."
+           This section was a bare list of fourteen text links. The live page carries FOUR
+           pillar tiles with icons and TWELVE service photographs, all of which were captured
+           on 2026-07-30 and sat unused on disk. A text-parity check scored this section 100%
+           because every service NAME was present — which is exactly how a page can carry every
+           word of the original and none of its pictures.
+           ⚠ Every one of these twelve photographs ships with EMPTY ALT on the live site. Real
+           alt text is written here, which is a genuine accessibility fix on their own asset. -->
+      <ul class="pillars">
+        <li class="pillar">
+          <img src="../shared/img/icon-emergency.png" width="512" height="512" alt="" loading="lazy" decoding="async">
+          <h3>Emergency Dentistry</h3>
+          <p>Toothaches don&rsquo;t wait for business hours. Same-day appointments when you are in pain.</p>
+        </li>
+        <li class="pillar">
+          <img src="../shared/img/icon-implant.png" width="512" height="512" alt="" loading="lazy" decoding="async">
+          <h3>Restorative &amp; Implant Dentistry</h3>
+          <p>3D cone beam planning for implants, All on 4 and implant dentures.</p>
+        </li>
+        <li class="pillar">
+          <img src="../shared/img/icon-restorative.png" width="512" height="512" alt="" loading="lazy" decoding="async">
+          <h3>Cosmetic Dentistry</h3>
+          <p>Veneers to Invisalign, at the intersection of science and artistry.</p>
+        </li>
+        <li class="pillar">
+          <img src="../shared/img/svc-preventive.webp" width="1024" height="683" alt="" loading="lazy" decoding="async">
+          <h3>Family &amp; Preventive Dentistry</h3>
+          <p>From your child&rsquo;s first visit to senior care, stopping problems before they start.</p>
+        </li>
+      </ul>
+
+      <ul class="svc">
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-all-on-4.webp" width="1024" height="683" alt="An All on 4 implant treatment at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <!-- Their own spelling, "All on 4 Implants". Mine read "All-on-4" and the parity pass
+               scored it absent, correctly: a service name is a proper noun and theirs is the
+               one patients see everywhere else on their site. -->
+          <span>All on 4 Implants</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-dentures.webp" width="1024" height="683" alt="Implant dentures fitted at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Implant Dentures</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-cosmetic.webp" width="1024" height="683" alt="Cosmetic dentistry at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Cosmetic Dentistry</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-invisalign.webp" width="1024" height="683" alt="Invisalign clear aligners at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Invisalign</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-orthodontics.webp" width="1024" height="683" alt="Orthodontic braces at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Orthodontics &amp; Braces</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-childrens.webp" width="1024" height="683" alt="A child at a dental visit at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Children&rsquo;s Dentistry</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-preventive.webp" width="1024" height="683" alt="A routine cleaning and exam at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Preventive Dentistry</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-gum-disease.webp" width="1024" height="683" alt="Gum disease treatment at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Gum Disease Treatment</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-root-canal.webp" width="1024" height="683" alt="Root canal therapy at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Root Canal Therapy</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-sedation.webp" width="1024" height="683" alt="Sedation dentistry at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Sedation Dentistry</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-extractions.webp" width="1024" height="683" alt="A tooth extraction at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Tooth Extractions</span></a></li>
+        <li class="svc__card"><a href="#book">
+          <img src="../shared/img/svc-wisdom-teeth.webp" width="1024" height="683" alt="Wisdom teeth removal at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <span>Wisdom Teeth Removal</span></a></li>
+      </ul>
+
+      <div class="roster__foot">
+        <a class="btn btn--primary" href="#book">Book an Appointment</a>
+        <a class="btn btn--ghost" href="tel:+19729643800">Call (972)&nbsp;964-3800</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WP03 §6 · CONDITIONS TREATED — two-column checklist. Pattern #301, list variant.
+       WP03's reason for this section is the one I would not have thought of: it doubles as the
+       INTERNAL-LINK SURFACE to condition pages and is the long-tail search surface. A service
+       grid answers "what do you do"; this answers "can you fix MY problem", which is the query
+       an actual patient types.
+       ⛔ PLAIN DESCRIPTIVE LANGUAGE ONLY, never diagnostic advice — WP03's rule and the right one
+       for regulated healthcare. Every line names a symptom a patient would recognise in
+       themselves; not one suggests a cause or a treatment. -->
+  <section class="cond" aria-labelledby="cond-h">
+    <div class="wrap">
+      <div class="cond__head reveal">
+        <p class="eyebrow">Reasons people come in</p>
+        <h2 id="cond-h">If any of this sounds <b>familiar, we can help</b></h2>
+      </div>
+      <div class="cond__grid">
+        <div class="cond__card reveal">
+          <h3>Something hurts</h3>
+          <ul class="ticks">
+            <li>A tooth that aches or throbs</li>
+            <li>Pain when you bite down</li>
+            <li>Sensitivity to hot or cold</li>
+            <li>A chipped or broken tooth</li>
+            <li>A lost filling or crown</li>
+            <li>Sore or bleeding gums</li>
+          </ul>
+        </div>
+        <div class="cond__card reveal">
+          <h3>Something bothers you</h3>
+          <ul class="ticks">
+            <li>Missing teeth, or gaps you hide</li>
+            <li>Crowded or crooked teeth</li>
+            <li>Staining and discolouration</li>
+            <li>Dentures that no longer fit</li>
+            <li>Wisdom teeth coming through</li>
+            <li>It has simply been a long time</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S6 · PROOF — "Why Plano Trusts Vitality Dental"
+       Their own heading, their own reviews. Live page runs 7; five ship here.
+       ⛔ TWO ARE DELIBERATELY HELD: Ron Silvestre's and Aubrey Schmidt's both praise
+       "Dr. Gino" by name, and whether Dr. Gino Silvestre is still with the practice is an
+       OPEN client question (his bio 301s to /about/ while "gino silvestre" pulls 21 clicks
+       at position 1.6). Publishing praise for a doctor whose status is unconfirmed is the
+       unregistered-claim failure wearing a friendly face. They return the moment the client
+       answers. Reviews are otherwise VERBATIM — trimmed for length only, never reworded.
+       ============================================================ -->
+  <section class="proof" id="reviews" aria-labelledby="proof-h">
+    <div class="wrap">
+      <div class="proof__head reveal">
+        <p class="eyebrow">Patients love it here</p>
+        <h2 id="proof-h">Why Plano trusts <b>Vitality Dental</b></h2>
+        <p class="proof__lede">&ldquo;Is it possible to actually enjoy the dentist?&rdquo; Our patients say yes.</p>
+        <p class="proof__count">
+          <span class="stars" role="img" aria-label="Rated 4.9 out of 5">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6 4.8 17.5 6 11.7 1.6 7.7l5.9-.7z"/></svg>
+          </span>
+          <b>4.9</b> &middot; over 1,000 Google reviews
+        </p>
+      </div>
+
+      <!-- No specific count anywhere in this block. Three live sources disagree (1,263 vs
+           1025 vs "over a 1000") and their own schema carries no aggregateRating to settle it. -->
+      <ul class="rev">
+        <li class="rev__card reveal">
+          <blockquote>Awesome team, they are so helpful and explain everything in great detail. I&rsquo;m terrified of dental procedures and everyone from the dentists to the hygienists have been very patient and gentle.</blockquote>
+          <p class="rev__by">Cara Weatherby <span>Google review</span></p>
+        </li>
+        <li class="rev__card reveal">
+          <blockquote>Dr. Kung never rushes and is always patient with all my questions, providing me with all kinds of options and recommendations for my concerns. He is professional, knowledgeable and caring. I trust Dr. Kung a lot.</blockquote>
+          <p class="rev__by">Laura <span>Google review</span></p>
+        </li>
+        <li class="rev__card reveal">
+          <blockquote>Vitality Dental is the BEST in DFW. I came in with an extreme fear and I&rsquo;ve gone from getting laughing gas to just gel on gums for cleaning. Everyone from front office to dental tech to doctors are absolutely amazing. I tell all my friends.</blockquote>
+          <p class="rev__by">Michelle Moorman <span>Google review</span></p>
+        </li>
+        <li class="rev__card reveal">
+          <blockquote>My family and I have been going to Vitality Dental for three years now. The office is clean and welcoming, and booking appointments is easy with little to no wait time. We always feel well taken care of.</blockquote>
+          <p class="rev__by">Cherie C <span>Google review</span></p>
+        </li>
+        <li class="rev__card reveal">
+          <blockquote>Such a great experience. The entire team is so friendly and the dental care is outstanding!</blockquote>
+          <p class="rev__by">Stephanie Miner <span>Google review</span></p>
+        </li>
+        <!-- ✅ THE TWO "DR. GINO" REVIEWS, RESTORED. Both are running on the client's homepage
+             right now — checked against the live HTML rather than asked about. I had held them
+             because Dr. Gino Silvestre's bio 301s to /about/ and his status was unconfirmed.
+             That reasoning was wrong in the same way twice over: the practice publishes these
+             reviews itself, today, on the page we are redesigning, and a patient's praise is
+             not a claim about who is on staff. If it is on their site it is fair to carry. -->
+        <li class="rev__card reveal">
+          <blockquote>My first visit to the clinic, Dr. Gino and the entire Vitality Dental Team were awesome! Professional. Informative. Walked me every step of the way of my treatment. Great for the whole family! Highly recommend!</blockquote>
+          <p class="rev__by">Ron Silvestre <span>Google review</span></p>
+        </li>
+        <li class="rev__card reveal">
+          <blockquote>Exceptional team at Vitality Dental. The staff is so friendly and attentive. They make a point to ensure you&rsquo;re comfortable throughout the whole process. I had to get two fillings today and aside from the numbing shots I felt absolutely 0 pain.</blockquote>
+          <p class="rev__by">Aubrey Schmidt <span>Google review</span></p>
+        </li>
+      </ul>
+
+      <!-- 🔴 THE FIVE PATIENT FILMS. These are the single strongest proof asset the practice
+           owns and the capture note says most competitors have nothing like them — and the
+           mockup carried NONE of them until the live re-fetch measured media coverage at 13%.
+           They are real, named, identifiable patients, published by the client on THIS page,
+           so reusing them on a redesign of the same page is the same context (the S7 rule).
+           WEIGHT: the live page serves 85.7 MB across these five with FOUR OF THEM MISSING A
+           POSTER, so they render as black rectangles until clicked. Here they are 513 KB to
+           930 KB each, 3.4 MB for all five, every one with a poster frame.
+           ⚠ THREE ARE UNLABELLED ON PURPOSE: the filenames give "Matt" and "LauraL" plainly,
+           but the other three are Santa-1, compliment and testimonial-2, and inventing a
+           patient's name from a filename is the fabrication rule exactly. They need the client. -->
+      <div class="vids reveal">
+        <h3 class="vids__title">Patients in their own words</h3>
+        <ul class="vids__row">
+          <li>
+            <video controls preload="none" playsinline width="540" height="960"
+                   poster="../shared/video/testimonial-posters/Matt-1-poster.webp">
+              <source src="../shared/video/t-Matt-1.mp4" type="video/mp4">
+            </video>
+            <p>Matt</p>
+          </li>
+          <li>
+            <video controls preload="none" playsinline width="540" height="960"
+                   poster="../shared/video/testimonial-posters/LauraL-1-poster.webp">
+              <source src="../shared/video/t-LauraL-1.mp4" type="video/mp4">
+            </video>
+            <p>Laura L.</p>
+          </li>
+          <li>
+            <video controls preload="none" playsinline width="540" height="960"
+                   poster="../shared/img/testimonial-2-poster.jpg">
+              <source src="../shared/video/t-testimonial-2.mp4" type="video/mp4">
+            </video>
+            <p>Patient story</p>
+          </li>
+          <li>
+            <video controls preload="none" playsinline width="540" height="960"
+                   poster="../shared/video/testimonial-posters/compliment-poster.webp">
+              <source src="../shared/video/t-compliment.mp4" type="video/mp4">
+            </video>
+            <p>Patient story</p>
+          </li>
+          <li>
+            <video controls preload="none" playsinline width="540" height="960"
+                   poster="../shared/video/testimonial-posters/Santa-1-poster.webp">
+              <source src="../shared/video/t-Santa-1.mp4" type="video/mp4">
+            </video>
+            <p>Patient story</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S7 · BEFORE &amp; AFTER — "Real Patients, Real Smiles"
+       🔴 THE CRO FIX ON THEIR OWN ASSET: their live gallery ships 11 pairs with ZERO captions,
+       so a visitor cannot tell an implant case from veneers. The procedure name exists only
+       inside the filename. Every pair here is LABELLED BY PROCEDURE, taken from the client's
+       own filename and nothing else — "Cosmetic-Sarah" becomes "cosmetic dentistry", NOT
+       "veneers", because inventing the specific procedure is exactly the arithmetic-fabrication
+       shape (L-334). Two pairs are on disk; the remaining nine live on their gallery page.
+       The comparison control is a real <input type="range">, so it is draggable with a mouse,
+       swipeable on touch AND operable from the keyboard with an accessible name.
+       ============================================================ -->
+  <section class="ba-sec" aria-labelledby="ba-h">
+    <div class="wrap">
+      <div class="ba-sec__head reveal">
+        <p class="eyebrow">Before &amp; after</p>
+        <h2 id="ba-h">Real patients, <b>real smiles</b></h2>
+        <p>We are helping our patients restore their smiles and their confidence. Drag the handle to see the change.</p>
+      </div>
+
+      <div class="ba-grid">
+        <figure class="ba reveal">
+          <div class="ba__frame">
+            <img class="ba__base" src="../shared/img/ba-sarah-before.jpg" width="2560" height="1714"
+                 alt="Sarah's teeth before cosmetic dentistry at Vitality Dental" loading="lazy" decoding="async">
+            <div class="ba__after">
+              <img src="../shared/img/ba-sarah-after.jpg" width="2560" height="1714"
+                   alt="Sarah's teeth after cosmetic dentistry at Vitality Dental" loading="lazy" decoding="async">
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <span class="ba__tag ba__tag--before" aria-hidden="true">Before</span>
+            <span class="ba__tag ba__tag--after" aria-hidden="true">After</span>
+            <!-- Neutral wording, and deliberately so: the divider moves, it does not "reveal
+                 the after". Dragging right shows MORE of the before photo, which is how every
+                 comparison slider behaves, and a label promising the opposite would mislead
+                 exactly the user who cannot see the result. -->
+            <input class="ba__range" type="range" min="8" max="92" value="50" step="1"
+                   aria-label="Move the divider to compare Sarah's cosmetic dentistry case, before and after">
+          </div>
+          <figcaption><b>Cosmetic dentistry</b> &middot; Sarah</figcaption>
+        </figure>
+
+        <figure class="ba reveal">
+          <div class="ba__frame">
+            <img class="ba__base" src="../shared/img/ba-keith-before.jpg" width="2560" height="1714"
+                 alt="Keith's front teeth before anterior crowns at Vitality Dental" loading="lazy" decoding="async">
+            <div class="ba__after">
+              <img src="../shared/img/ba-keith-after.jpg" width="2560" height="1714"
+                   alt="Keith's front teeth after anterior crowns at Vitality Dental" loading="lazy" decoding="async">
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <span class="ba__tag ba__tag--before" aria-hidden="true">Before</span>
+            <span class="ba__tag ba__tag--after" aria-hidden="true">After</span>
+            <input class="ba__range" type="range" min="8" max="92" value="50" step="1"
+                   aria-label="Move the divider to compare Keith's anterior crowns case, before and after">
+          </div>
+          <figcaption><b>Anterior crowns</b> &middot; Keith</figcaption>
+        </figure>
+
+        <!-- The THIRD pair, captured on 2026-07-30 and never used. The live gallery runs
+             eleven; three now ship here and the rest live on their gallery page. -->
+        <figure class="ba reveal">
+          <div class="ba__frame">
+            <img class="ba__base" src="../shared/img/ba-will-before.jpg" width="2000" height="1339"
+                 alt="Will's teeth before cosmetic dentistry at Vitality Dental" loading="lazy" decoding="async">
+            <div class="ba__after">
+              <img src="../shared/img/ba-will-after.jpg" width="2000" height="1339"
+                   alt="Will's teeth after cosmetic dentistry at Vitality Dental" loading="lazy" decoding="async">
+            </div>
+            <span class="ba__divider" aria-hidden="true"></span>
+            <span class="ba__tag ba__tag--before" aria-hidden="true">Before</span>
+            <span class="ba__tag ba__tag--after" aria-hidden="true">After</span>
+            <input class="ba__range" type="range" min="8" max="92" value="50" step="1"
+                   aria-label="Move the divider to compare Will's cosmetic dentistry case, before and after">
+          </div>
+          <figcaption><b>Cosmetic dentistry</b> &middot; Will</figcaption>
+        </figure>
+      </div>
+
+      <p class="ba-sec__more"><a href="https://vitalitydentaldfw.com/before-and-after/">See all 11 before &amp; after cases</a></p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S8 · EMERGENCY — their largest search cluster (11,461 impressions) given its own band.
+       On the live site this is buried as one tile inside a 1,472px service grid.
+       ============================================================ -->
+  <section class="urgent" id="emergency" aria-labelledby="urgent-h">
+    <div class="wrap">
+      <div class="urgent__grid">
+        <div class="reveal">
+          <p class="eyebrow eyebrow--gold">Emergency dentistry</p>
+          <h2 id="urgent-h">Toothaches don&rsquo;t wait <b>for business hours</b></h2>
+          <p>If you are in pain, we prioritize getting you out of it. Whether it is a broken tooth, severe pain or a dental injury, we offer same-day emergency appointments during office hours, Monday to Friday, 7AM to 3PM.</p>
+          <div class="urgent__cta">
+            <a class="btn btn--primary" href="tel:+19729643800">Call (972)&nbsp;964-3800</a>
+            <a class="btn btn--ghost" href="#book">Book an Appointment</a>
+          </div>
+        </div>
+        <div class="urgent__list reveal">
+          <h3>Common emergencies we handle</h3>
+          <ul>
+            <li>Severe toothaches or abscesses</li>
+            <li>Knocked-out or broken teeth</li>
+            <li>Lost fillings or crowns</li>
+            <li>Soft tissue injuries</li>
+          </ul>
+          <p class="urgent__note"><b>Life-threatening?</b> Uncontrolled bleeding, swelling that affects breathing or swallowing, or a facial injury means 911 or the nearest emergency room, not a dental office.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S9 · MONEY — "Financial Peace of Mind" · #plans
+       🔴 THIS IS THE HIGHEST-VALUE MOVE ON THE PAGE. On the live site the pricing tiles sit at
+       y=8,112 of 9,934 — roughly 82% of the way down, where almost nobody scrolls. It is their
+       single strongest differentiator and it is buried. Here it sits mid-page, directly after
+       the proof and the urgency, which is where a cost objection actually forms.
+       Every figure is their own published price. Nothing derived, nothing rounded.
+       ============================================================ -->
+  <section class="money" id="plans" aria-labelledby="money-h">
+    <div class="wrap">
+      <div class="money__head reveal">
+        <p class="eyebrow">Financial peace of mind</p>
+        <h2 id="money-h">No insurance? <b>No problem.</b></h2>
+        <p>We believe top-tier dental care should be within reach. Our team verifies your coverage and maximizes your benefits before your appointment, so there are no surprises in the chair.</p>
+      </div>
+
+      <div class="money__cols">
+        <div class="money__col reveal">
+          <h3>We accept</h3>
+          <ul class="ticks">
+            <li>HSA and FSA cards</li>
+            <li>Most major PPO dental insurance plans</li>
+            <li>CareCredit and flexible payment options</li>
+          </ul>
+          <p class="money__free"><b>Complimentary insurance benefits check.</b> We deal with the insurance companies so you don&rsquo;t have to.</p>
+        </div>
+        <div class="money__col money__col--plan reveal">
+          <h3>In-house dental plan</h3>
+          <p class="money__sub">For patients without insurance:</p>
+          <ul class="nos">
+            <li>No deductibles</li>
+            <li>No yearly maximums</li>
+            <li>No administrative forms</li>
+            <li>No pre-authorization required</li>
+            <li>No waiting periods, immediate eligibility</li>
+            <li>Discounts on preventive, restorative and cosmetic services</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="tiers">
+        <li class="tier reveal">
+          <img class="tier__img" src="../shared/img/offer-implant-bridge.webp" width="700" height="535" alt="" loading="lazy" decoding="async">
+          <p class="tier__price">$34<span>/month</span></p>
+          <h3 class="tier__name">Adult Wellness Plan</h3>
+          <ul>
+            <li>2 preventive cleanings</li>
+            <li>All exams necessary</li>
+            <li>All X-rays necessary</li>
+            <li>Annual fluoride</li>
+            <li>Annual oral cancer screening</li>
+            <li>Annual periodontal screening</li>
+            <li>15% off additional cleanings</li>
+          </ul>
+          <a class="btn btn--primary" href="#book">Book an Appointment</a>
+        </li>
+        <li class="tier reveal">
+          <img class="tier__img" src="../shared/img/offer-child-coupon.webp" width="650" height="437" alt="" loading="lazy" decoding="async">
+          <p class="tier__price">$29<span>/month</span></p>
+          <h3 class="tier__name">Child Wellness Plan</h3>
+          <p class="tier__note">Children under 12 years</p>
+          <ul>
+            <li>2 preventive cleanings</li>
+            <li>All exams necessary</li>
+            <li>All X-rays necessary</li>
+            <li>Annual fluoride</li>
+            <li>Annual oral cancer screening</li>
+            <li>Annual periodontal screening</li>
+            <li>15% off additional cleanings</li>
+          </ul>
+          <a class="btn btn--primary" href="#book">Book an Appointment</a>
+        </li>
+        <li class="tier reveal">
+          <img class="tier__img" src="../shared/img/offer-insurance.webp" width="700" height="399" alt="" loading="lazy" decoding="async">
+          <p class="tier__price">$7<span>/month</span></p>
+          <h3 class="tier__name">Treatment Add-on</h3>
+          <p class="tier__note">Add-on or standalone plan</p>
+          <ul>
+            <li>15% off all procedures</li>
+          </ul>
+          <a class="btn btn--primary" href="#book">Book an Appointment</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S10 · TECHNOLOGY — their own equipment photography, three real files.
+       ============================================================ -->
+  <section class="tech" aria-labelledby="tech-h">
+    <div class="wrap">
+      <div class="tech__head reveal">
+        <p class="eyebrow">In the operatory</p>
+        <h2 id="tech-h">Technology that respects <b>your time and comfort</b></h2>
+        <p>We don&rsquo;t use technology to look impressive. We use it to make your visit faster and less painful.</p>
+      </div>
+      <ul class="tech__grid">
+        <li class="tech__card reveal">
+          <img src="../shared/img/tech-3d-imaging.webp" width="1080" height="720"
+               alt="The 3D cone beam scanner in the Vitality Dental operatory" loading="lazy" decoding="async">
+          <h3>3D Cone Beam Imaging</h3>
+          <p>Shows us what 2D X-rays miss, which is what makes accurate dental implant placement possible.</p>
+        </li>
+        <li class="tech__card reveal">
+          <img src="../shared/img/tech-scanner.webp" width="1080" height="720"
+               alt="The 3D intraoral scanner used for digital impressions at Vitality Dental" loading="lazy" decoding="async">
+          <h3>Digital X-Rays &amp; 3D Intraoral Scanner</h3>
+          <p>You see exactly what we see, with faster diagnostics and less radiation exposure.</p>
+        </li>
+        <li class="tech__card reveal">
+          <img src="../shared/img/tech-laser.webp" width="1080" height="720"
+               alt="The soft-tissue dental laser used at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <h3>Soft-Tissue Lasers</h3>
+          <p>Quicker healing, less bleeding and reduced discomfort during procedures.</p>
+        </li>
+        <!-- The two technology photographs the live page carries that this section had dropped. -->
+        <li class="tech__card reveal">
+          <img src="../shared/img/tech-printer.png" width="1024" height="781"
+               alt="The in-house 3D printer at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <h3>In-House 3D Printing</h3>
+          <p>Appliances and guides produced on site, which keeps more of your treatment under one roof.</p>
+        </li>
+        <li class="tech__card reveal">
+          <img src="../shared/img/tech-digital.jpeg" width="2560" height="1707"
+               alt="Digital dental technology in use at Vitality Dental in Plano" loading="lazy" decoding="async">
+          <h3>Digital Workflow</h3>
+          <p>Digital records and imaging throughout, so your visit moves faster and repeats less.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S11 · LOCAL INSIGHT — Cedar Fever. Genuinely distinctive content almost no dental
+       site has, and a real AEO asset: it answers a question people actually type.
+       ============================================================ -->
+  <section class="insight" aria-labelledby="insight-h">
+    <div class="wrap">
+      <div class="insight__body reveal">
+        <p class="eyebrow eyebrow--gold">Dr. Kung&rsquo;s local insight</p>
+        <h2 id="insight-h">Is it a cavity, <b>or &ldquo;Cedar Fever&rdquo;?</b></h2>
+        <p class="insight__kicker">Living in North Texas comes with unique challenges for your mouth.</p>
+        <p>Every year between December and February, we see dozens of patients rush in convinced they have a dying tooth in the upper back of their mouth. The real culprit? Mountain Cedar pollen.</p>
+        <p>Your upper molar roots sit right below your maxillary sinuses. When Cedar Fever inflames those sinuses, the pressure pushes down on the nerves of your teeth and mimics a toothache.</p>
+        <p class="insight__tip"><b>Pro tip:</b> if your upper teeth hurt on both sides and you are congested, it might be allergies. If the pain is isolated to one specific tooth, call us at <a href="tel:+19729643800">(972)&nbsp;964-3800</a>. That can be an infection needing urgent care.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S12 · PEOPLE — "About Dr. Andrew Kung & the Vitality Dental Team" · #team
+       All three doctors, all three real headshots, TRUE dimensions declared (692x770 for
+       Dr. Kung, 1536x1536 for the other two — they genuinely differ, and declaring a uniform
+       box is the aspect lie the CMQA pass caught in the header logo).
+       ⚠ BADGE SET vs TEXT LIST DISAGREE ON THE LIVE SITE, recorded not silently reconciled:
+       their written list names ADA · TDA · AGD · ICOI · AAFE, while the badge row on the same
+       page renders SIX images including AACD and ACP, and carries no AAFE badge. Both are
+       reproduced exactly as they publish them. The two badge names were read OFF THE IMAGE
+       FILES, not guessed from filenames.
+       ============================================================ -->
+  <section class="team" id="team" aria-labelledby="team-h">
+    <div class="wrap">
+      <div class="team__head reveal">
+        <p class="eyebrow">The people</p>
+        <h2 id="team-h">About Dr. Andrew Kung <b>&amp; the Vitality Dental team</b></h2>
+        <p>Dr. Andrew Kung is a Plano native who believes dentistry is never only about teeth. After personally undergoing extensive treatment to transform his own smile, he understands dental fear and what a healthy smile changes.</p>
+        <p>He is joined by <b>Dr. David Burkett</b> and <b>Dr. Brian Son</b>, a team combining decades of experience with current dental technology.</p>
+      </div>
+
+      <ul class="team__grid">
+        <li class="doc reveal">
+          <img src="../shared/img/dr-kung.webp" width="692" height="770"
+               alt="Dr. Andrew Kung, dentist at Vitality Dental in Plano, Texas" loading="lazy" decoding="async">
+          <h3>Dr. Andrew Kung</h3>
+          <p>A proud graduate of Plano Senior High. Fellow of the Academy of General Dentistry, earned by only 6% of general dentists, and Fellow of the International Congress of Oral Implantologists.</p>
+          <!-- The two FELLOWSHIP marks the live page carries in this exact block. They are
+               different files from the association badge row lower down, and I had promoted
+               them to disk and then not placed them — the media audit caught that. These two
+               are the credentials the client's own homepage text asserts, so unlike the AACD
+               and prosthodontics logos the Codex pass removed, they belong here. -->
+          <p class="doc__creds">
+            <img src="../shared/img/cred-fagd.jpeg" width="225" height="225" alt="Fellow, Academy of General Dentistry" loading="lazy" decoding="async">
+            <img src="../shared/img/cred-icoi-fellow.png" width="225" height="225" alt="Fellow, International Congress of Oral Implantologists" loading="lazy" decoding="async">
+          </p>
+        </li>
+        <li class="doc reveal">
+          <img src="../shared/img/dr-burkett.jpg" width="1536" height="1536"
+               alt="Dr. David Burkett, dentist at Vitality Dental in Plano, Texas" loading="lazy" decoding="async">
+          <h3>Dr. David Burkett</h3>
+          <p>Part of the Vitality Dental doctor team on Coit Road.</p>
+        </li>
+        <li class="doc reveal">
+          <img src="../shared/img/dr-son.jpg" width="1536" height="1536"
+               alt="Dr. Brian Son, dentist at Vitality Dental in Plano, Texas" loading="lazy" decoding="async">
+          <h3>Dr. Brian Son</h3>
+          <p>Part of the Vitality Dental doctor team on Coit Road.</p>
+        </li>
+      </ul>
+
+      <div class="team__local reveal">
+        <h3>A &ldquo;homegrown&rdquo; Plano native</h3>
+        <p>Dr. Kung isn&rsquo;t only a dentist in Plano, he is part of this community&rsquo;s fabric. Whether he is volunteering with the Texas Mission of Mercy or hosting the practice&rsquo;s annual Santa and Mrs. Claus community event, he treats his neighbors like family.</p>
+      </div>
+
+      <!-- 🔴 TWO CMQA RUNG-2 HIGHS LANDED HERE AND BOTH ARE FIXED BY THE SAME REWRITE.
+           HIGH #3 — CREDENTIALS. This was a rolling band of SIX badges. Codex went and read the
+           client's own live doctor profile, which I had not: it describes AACD and the "American
+           Academy of Prosthodontics" as DENTAL-SCHOOL memberships, while ADA and TDA are current.
+           So shipping those two logos under a heading reading "Professional affiliations" would
+           have (a) promoted a student membership to a present affiliation and (b) named a
+           DIFFERENT organisation than the practice claims, since the logo I read off the file
+           says "American College of Prosthodontists". I verified the badge names honestly and
+           still got the CLAIM wrong, because reading a logo tells you what the logo says, not
+           whether the practice currently holds it. Only the four the client's own homepage text
+           asserts as current now ship. AAFE stays text-only, exactly as they publish it.
+           HIGH #4 — MOTION. The band auto-scrolled on a 34s loop and paused only on :hover, so a
+           keyboard user had no way to stop it. That is WCAG 2.2.2's textbook failure case for
+           non-essential motion over five seconds. A static row removes the failure rather than
+           bolting a pause button onto decoration, and it also removes the reduced-motion
+           overflow Codex found underneath it (MED #9). Two HIGHs and a MED, one deletion. -->
+      <div class="badges reveal" role="group" aria-labelledby="aff-h">
+        <h3 id="aff-h" class="badges__title">Professional affiliations</h3>
+        <p class="badges__text">American Dental Association &middot; Texas Dental Association &middot; Academy of General Dentistry (Fellow) &middot; International Congress of Oral Implantologists (Fellow) &middot; American Academy of Facial Esthetics</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S13 · LOCAL — "How to Find Vitality Dental" · #local
+       Their landmark-based driving directions are the best local-SEO asset on their site and
+       almost no dental practice has anything like them. Carried close to verbatim.
+       ============================================================ -->
+  <section class="local" id="local" aria-labelledby="local-h">
+    <div class="wrap">
+      <div class="local__grid">
+        <div class="reveal">
+          <p class="eyebrow">Finding us</p>
+          <h2 id="local-h">How to find <b>Vitality Dental</b></h2>
+          <p class="local__lede">We are right on Coit Road, tucked into the southwest corner of the Coit and 15th Street intersection, inside the North Coit Medical Plaza.</p>
+
+          <dl class="local__dl">
+            <dt>From George Bush Turnpike</dt>
+            <dd>Head north on Coit Road. We will be on your left (west) side just before you hit the light at 15th Street.</dd>
+            <dt>Landmark navigation</dt>
+            <dd>If you pass Plano Family Medicine you are right on target, we are neighbors. If you see Cheyenne Park or the zTAO Marketplace, you have gone a block too far south.</dd>
+            <dt>Parking</dt>
+            <dd>No garages, no meters. There is free surface parking right in front of Suite 106.</dd>
+          </dl>
+        </div>
+
+        <!-- 🔴 THE MAP. The live page runs TWO Google Maps iframes and this section had none —
+             Del: "some parts are rendered from another platform… use static images as
+             placeholders for those." An iframe is a third-party render that cannot be captured,
+             so the placeholder is the client's OWN photograph of the building you are actually
+             looking for, with a real directions link doing the map's job. Arguably better than
+             the embed for a first visit: a map tells you where, a photo tells you what to look
+             for, and the button still opens the real map. -->
+        <div class="local__map reveal">
+          <img src="../shared/img/office-exterior.webp" width="1536" height="1024"
+               alt="The exterior of the North Coit Medical Plaza, where Vitality Dental is in Suite 106"
+               loading="lazy" decoding="async">
+          <a class="local__map-btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=1220+Coit+Rd+%23106,+Plano,+TX+75075">Get directions</a>
+        </div>
+
+        <div class="local__card reveal">
+          <h3>Vitality Dental</h3>
+          <p class="local__addr">
+            1220 Coit Rd #106<br>
+            Plano, TX 75075
+          </p>
+          <p class="local__row"><span>Phone</span> <a href="tel:+19729643800">(972)&nbsp;964-3800</a></p>
+          <p class="local__row"><span>Hours</span> Monday to Friday, 7AM to 3PM<br><span class="local__row-sub">Saturday &amp; Sunday closed</span></p>
+          <a class="btn btn--primary" href="#book">Book an Appointment</a>
+        </div>
+      </div>
+
+      <div class="local__areas reveal">
+        <h3>Nearby communities we serve</h3>
+        <ul>
+          <li>West Plano</li>
+          <li>East Plano</li>
+          <li>Parker</li>
+          <li>Willow Bend</li>
+          <li>Legacy West</li>
+          <li>Medical City Plano area</li>
+          <li>Preston Road corridor</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S14 · FAQ — native <details>, free keyboard and screen-reader behaviour.
+       ⛔ FOUR OF THEIR FIVE SHIP. The fifth ("Do you speak languages other than English?")
+       is FROZEN: it claims English, Japanese, Chinese, Spanish and that Dr. Kung is fluent in
+       Mandarin, while the multilingual-staff roster is an open client question. The capture
+       marked it "do not carry into a mockup until the client confirms". Held, not quietly
+       dropped, and it returns the moment the client answers.
+       ============================================================ -->
+  <section class="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="faq__head reveal">
+        <p class="eyebrow">Common questions</p>
+        <h2 id="faq-h">Questions about <b>our Plano dental office</b></h2>
+      </div>
+      <div class="faq__list reveal">
+        <details>
+          <summary>Do you offer sedation for anxious patients?</summary>
+          <div class="faq__a"><p>Absolutely. We offer different levels of sedation to help our patients feel comfortable and relaxed, including nitrous oxide (laughing gas) and oral sedation. If you are afraid of visiting the dentist, you have absolutely nothing to be ashamed of.</p></div>
+        </details>
+        <details>
+          <summary>How much does it cost to visit a dentist in Plano without insurance?</summary>
+          <div class="faq__a"><p>Costs vary depending on the service, and our in-house adult wellness plan is $34 a month and the child plan is $29. We offer complimentary consultations where we can give you transparent pricing for what you actually need. New patients are always welcome.</p></div>
+        </details>
+        <!-- ✅ RESTORED 2026-08-03 after checking the LIVE page instead of asking. This answer
+             is published on their homepage right now, in these words. I had frozen it pending a
+             client confirmation of the staff languages — which was the consent-rule misfire all
+             over again: the client made the disclosure decision themselves, on the very page we
+             are redesigning. Withholding their own published claim is not caution, it is just
+             removing something true. Verbatim, unedited. -->
+        <details>
+          <summary>Do you speak languages other than English?</summary>
+          <div class="faq__a"><p>Yes! At Vitality Dental, we speak your language, including English, Japanese, Chinese, and Spanish. Dr. Kung is fluent in Mandarin, and our team is trained to ensure every patient feels understood and empowered on their oral health journey.</p></div>
+        </details>
+        <details>
+          <summary>What should I do if I have a dental emergency on the weekend?</summary>
+          <!-- 🔴 CMQA RUNG-2 HIGH #6, and the most serious finding of the session. The previous
+             answer told someone with uncontrolled bleeding "don't wait" and then gave them ONE
+             instruction: call an office this same page says is closed Saturday and Sunday.
+             That is unsafe routing on a healthcare page.
+             ⚠ WORSE: the wireframe I built this page on ALREADY REQUIRED THIS. Its medical row
+             reads "MUST include an after-hours line disclosure or a for-life-threatening-
+             emergencies-call-911 disclaimer". I read that line, quoted it in the plan, and did
+             not apply it. A rule you have read and not applied is indistinguishable from a rule
+             you never had. -->
+        <div class="faq__a">
+          <p><b>If it is life-threatening, call 911 or go to the nearest emergency room.</b> That includes uncontrolled bleeding, swelling that affects your breathing or swallowing, or a facial injury.</p>
+          <p>For dental pain, a knocked-out tooth or a lost crown, call our office at <a href="tel:+19729643800">(972)&nbsp;964-3800</a>. We prioritize emergency cases and offer same-day appointments whenever possible. Office hours are Monday to Friday, 7AM to 3PM.</p>
+        </div>
+        </details>
+        <details>
+          <summary>Are you accepting new patients?</summary>
+          <div class="faq__a"><p>Yes. New patients and emergency appointments are always welcome. We have gone out of our way to make the office a place you can be comfortable in, with short wait times and a family-like atmosphere.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WP03 §10 · PATIENT EDUCATION — pattern #75 editorial rhythm.
+       WP03 calls this "the AI-citation surface", which is the real argument for it: an answer
+       engine can only quote a page that answers something. Every card is a question their own
+       patients demonstrably ask — the Cedar Fever piece is the practice's own published insight,
+       the other two come straight from their FAQ. Nothing invented, nothing padded to fill a row.
+       ============================================================ -->
+  <section class="edu" aria-labelledby="edu-h">
+    <div class="wrap">
+      <div class="edu__head reveal">
+        <p class="eyebrow">Patient education</p>
+        <h2 id="edu-h">Answers to what <b>people actually ask us</b></h2>
+      </div>
+      <ul class="edu__grid">
+        <li class="edu__card reveal">
+          <img src="../shared/img/office-detail.webp" width="1536" height="1024" alt="" loading="lazy" decoding="async">
+          <h3>Is it a cavity, or Cedar Fever?</h3>
+          <p>Between December and February, upper-molar pain in North Texas is often sinus pressure rather than a dying tooth. How to tell the difference.</p>
+          <span class="edu__more" aria-hidden="true">Read more</span>
+        </li>
+        <li class="edu__card reveal">
+          <img src="../shared/img/svc-sedation.webp" width="1024" height="683" alt="" loading="lazy" decoding="async">
+          <h3>What sedation actually feels like</h3>
+          <p>Nitrous oxide and oral sedation without the jargon, including what you will remember afterwards and whether you need someone to drive you home.</p>
+          <span class="edu__more" aria-hidden="true">Read more</span>
+        </li>
+        <li class="edu__card reveal">
+          <img src="../shared/img/offer-insurance.webp" width="300" height="171" alt="" loading="lazy" decoding="async">
+          <h3>Going to the dentist without insurance</h3>
+          <p>What care costs in Plano when you are paying out of pocket, and how an in-house plan changes the arithmetic.</p>
+          <span class="edu__more" aria-hidden="true">Read more</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S15 · BOOK — the conversion band every #book anchor on this page points at.
+       Nineteen CTAs were dead until this section existed.
+       ============================================================ -->
+  <section class="book" id="book" aria-labelledby="book-h">
+    <div class="wrap">
+      <div class="book__inner reveal">
+        <p class="eyebrow eyebrow--gold">Book your appointment</p>
+        <h2 id="book-h">Ready when <b>you are</b></h2>
+        <p>Same-day emergency appointments, complimentary consultations and an adult in-house plan at $34 a month. Call the office or book online and we will take it from there.</p>
+        <!-- 🔴 CMQA RUNG-2 HIGH #1: this button used to point at #book — the section it is
+             already inside. Twenty-four CTAs across the page funnel here, and the funnel
+             terminated in a link to itself. The dead-anchor probe passed it because the target
+             EXISTS; nothing was asking whether the conversion path went anywhere.
+             ▶ THE LESSON: "every anchor resolves" and "every CTA leads somewhere" are different
+             claims, and only the first one was ever being measured.
+             Both actions are now real: the phone, and the client's own contact page (taken from
+             the live link capture, not invented). -->
+        <div class="book__cta">
+          <a class="btn btn--primary" href="tel:+19729643800">Call (972)&nbsp;964-3800</a>
+          <a class="btn btn--ghost" href="https://vitalitydentaldfw.com/contact/">Request an appointment online</a>
+        </div>
+        <p class="book__meta">1220 Coit Rd #106, Plano, TX 75075 &middot; Monday to Friday, 7AM to 3PM &middot; Free parking out front</p>
+      </div>
+
+      <!-- 🔴 WP03 §7 REGULATED RULE, AND IT SHAPED THE FIELD LIST: never collect health history
+           in a public form — that is personal health information and a public form is the wrong
+           place for it. So there is no "reason for visit" free text, no symptom picker and no
+           medical history. Only what is needed to call somebody back. The service dropdown is a
+           routing hint, deliberately coarse and optional, never a clinical disclosure.
+           The form is a MOCKUP: no action, submission prevented, and it SAYS SO on submit —
+           a form that silently posts nowhere is worse than one that admits it. -->
+      <form class="book__form reveal" novalidate>
+        <p class="book__form-title">Request a call back</p>
+        <div class="field">
+          <label for="bk-name">Your name</label>
+          <input id="bk-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="bk-phone">Phone</label>
+          <input id="bk-phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="bk-email">Email <span>(optional)</span></label>
+          <input id="bk-email" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="bk-svc">What do you need? <span>(optional)</span></label>
+          <select id="bk-svc" name="service">
+            <option value="">Not sure yet</option>
+            <option>Checkup and cleaning</option>
+            <option>Something hurts</option>
+            <option>Cosmetic consultation</option>
+            <option>Implants or dentures</option>
+            <option>Braces or Invisalign</option>
+            <option>Children&rsquo;s dentistry</option>
+          </select>
+        </div>
+        <button class="btn btn--primary book__submit" type="submit">Request a call back</button>
+        <p class="book__privacy">We only use this to contact you about an appointment. Please don&rsquo;t send medical details here.</p>
+        <p class="book__demo" id="bookDemo" role="status" hidden>This is a design mockup, so nothing was sent.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     WP03 §11 · FOOTER — and the page had NONE. Every blueprint carries one; I built ten sections
+     and never noticed its absence, because a missing footer breaks no gate: no dead anchor, no
+     contrast failure, no overflow, no parity miss against a live-page TEXT inventory.
+     NAP here matches the Google Business Profile character for character, which is WP03's rule
+     and doubly load-bearing on this client — CallRail rewrites their visible numbers at runtime,
+     so the footer is the one place the number of record has to be right. -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <img src="../shared/img/logo-white.png" alt="Vitality Dental" width="886" height="128" loading="lazy" decoding="async">
+        <p>A boutique, high-touch family dental practice on Coit Road in West Plano. Every age, one office.</p>
+        <nav class="foot__social" aria-label="Vitality Dental on social media">
+          <a href="https://www.instagram.com/" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.2A6.6 6.6 0 1 0 18.6 12 6.6 6.6 0 0 0 12 5.4zm0 10.9A4.3 4.3 0 1 1 16.3 12 4.3 4.3 0 0 1 12 16.3zm6.9-11.1a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5z"/></svg></a>
+          <a href="https://www.facebook.com/" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://www.yelp.com/" aria-label="Yelp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3.2v8.3c0 .6-.7 1-1.2.6L5.2 9.3c-.4-.3-.5-.9-.2-1.3A9.9 9.9 0 0 1 9.8 2.4c.6-.2 1.2.2 1.2.8zm1.6 10.5l3.9-1.2c.6-.2 1.2.3 1.1.9a9.8 9.8 0 0 1-1.7 4.1c-.3.5-1 .5-1.3 0l-2.4-3.2c-.3-.4-.1-1 .4-1.1zm-1.9 1.7l.1 4.1c0 .6-.6 1.1-1.2.9a9.8 9.8 0 0 1-3.7-2.2c-.4-.4-.3-1.1.2-1.3l3.6-1.9c.5-.3 1 .1 1 .4zM9.5 12.6L5.7 14c-.6.2-1.2-.3-1.1-.9a9.8 9.8 0 0 1 .5-2.1c.2-.5.8-.7 1.2-.4l3.3 1.1c.5.2.5.8-.1.9zm6.8-1.3l-3.7.4c-.6.1-1-.6-.7-1.1l2.4-4.1c.3-.5 1-.6 1.4-.1a9.8 9.8 0 0 1 1.9 3.6c.2.6-.3 1.2-1.3 1.3z"/></svg></a>
+          <a href="https://www.youtube.com/" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg></a>
+          <a href="https://www.linkedin.com/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.9 21H3.4V9h3.5zM5.1 7.4A2 2 0 1 1 7.2 5.4a2 2 0 0 1-2.1 2zM21 21h-3.5v-5.9c0-1.4 0-3.2-2-3.2s-2.2 1.5-2.2 3.1V21H9.8V9h3.3v1.6h.1a3.7 3.7 0 0 1 3.3-1.8c3.5 0 4.2 2.3 4.2 5.3z"/></svg></a>
+          <a href="https://x.com/" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 3h3.2l-7 8 8.3 10h-6.5l-5-6.1-5.8 6.1H1.5l7.5-8.6L1 3h6.6l4.6 5.6zm-1.1 16.1h1.8L7.7 4.8H5.8z"/></svg></a>
+          <a href="https://www.tiktok.com/" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.4a6.4 6.4 0 0 1-3.8-1.2v6.9a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 .8.1v2.9a2.9 2.9 0 1 0 2 2.8V2h2.9a3.6 3.6 0 0 0 3.9 3.5z"/></svg></a>
+        </nav>
+      </div>
+
+      <div class="foot__col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#services">Preventive Dentistry</a></li>
+          <li><a href="#services">Children&rsquo;s Dentistry</a></li>
+          <li><a href="#services">Cosmetic Dentistry</a></li>
+          <li><a href="#services">Invisalign</a></li>
+          <li><a href="#services">All on 4 Implants</a></li>
+          <li><a href="#services">Emergency Dentistry</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h3>Practice</h3>
+        <ul>
+          <li><a href="#calm">Meet the team</a></li>
+          <li><a href="#plans">Financial &amp; in-house plan</a></li>
+          <li><a href="#local">Areas we serve</a></li>
+          <li><a href="#reviews">Patient reviews</a></li>
+          <li><a href="https://vitalitydentaldfw.com/before-and-after/">Before &amp; after gallery</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col foot__col--nap">
+        <h3>Visit us</h3>
+        <address>
+          1220 Coit Rd #106<br>
+          Plano, TX 75075
+        </address>
+        <p><a class="foot__tel" href="tel:+19729643800">(972)&nbsp;964-3800</a></p>
+        <p class="foot__hours">Monday to Friday, 7AM&ndash;3PM<br><span>Saturday &amp; Sunday closed</span></p>
+        <a class="foot__map" href="https://www.google.com/maps/dir/?api=1&amp;destination=1220+Coit+Rd+%23106,+Plano,+TX+75075">Get directions</a>
+      </div>
+    </div>
+
+    <p class="foot__legal">
+      &copy; 2026 Vitality Dental. All rights reserved.
+      <span>Financing available through CareCredit. Most major PPO plans accepted.</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* ---- Hero video: sources are attached ONLY after the gate passes. Hiding a video does not
+   stop it downloading; not attaching it does. ---- */
+(function(){
+  var v = document.querySelector('.hero__video');
+  if (!v) return;
+  var btn = document.getElementById('motionToggle');
+  var label = document.getElementById('motionToggleLabel');
+  var mqMotion  = matchMedia('(prefers-reduced-motion: reduce)');
+  var mqPointer = matchMedia('(pointer: fine)');
+  var attached = false, userPaused = false;
+
+  function on(mq, fn){ mq.addEventListener ? mq.addEventListener('change', fn) : mq.addListener(fn); }
+  /* CMQA LOW — honest correction to a claim, not a behaviour change. `(pointer:fine)` describes
+     the PRIMARY pointer; it does NOT mean "no touchscreen". A touchscreen laptop with a
+     trackpad passes this gate and downloads the video. The earlier claim "the video never
+     loads on a touch device" was therefore too strong. What is true: it never loads where the
+     primary pointer is coarse (phones and tablets), which is the population the byte budget
+     was protecting. Stated accurately rather than quietly overclaimed. */
+  function allowed(){ return !mqMotion.matches && mqPointer.matches; }
+
+  function attach(){
+    if (attached) return;
+    /* 11.2s multi-shot cut (1.59 MiB) — hallway → consult room → cone beam → vanity.
+       Nearly double the old 6.3s loop for 34% more weight, still under the 2MB gate.
+       ⛔ THE CUT IS BOUNDED BY CONSENT, NOT BY TASTE: a contact sheet of the full 68s shows
+       identifiable PATIENTS at roughly 28s, 48s and 64s, and patient media releases are an
+       OPEN client question. This range (12.7–24.5s) is staff-and-equipment only. Do not
+       extend it until the client confirms releases. The old webm sibling is dropped rather
+       than shipped stale — H.264 mp4 is universally supported. */
+    [['../shared/video/hero-loop-long.mp4','video/mp4; codecs="avc1.640028"']].forEach(function(s){
+      var el = document.createElement('source'); el.src = s[0]; el.type = s[1]; v.appendChild(el);
+    });
+    attached = true; v.load();
+    if (!userPaused) {
+      var p = v.play();
+      /* CMQA MED: the rejection used to be swallowed and the control still said "Pause" with
+         aria-pressed="false" — the button lied about the state of the video to exactly the
+         users least able to check (autoplay blocked, low-power mode, media error). The label
+         now follows what ACTUALLY happened. */
+      if (p && p.then) p.then(function(){ syncBtn(); }, function(){ syncBtn(); });
+      else syncBtn();
+    }
+    if (btn) btn.hidden = false;
+    syncBtn();
+  }
+
+  /* Single source of truth: the button always describes the video's real state. */
+  function syncBtn(){
+    if (!btn) return;
+    var paused = v.paused;
+    btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+    if (label) label.textContent = paused ? 'Play background video' : 'Pause background video';
+    var g = btn.querySelector('.glyph'); if (g) g.textContent = paused ? '▶' : '❚❚';
+  }
+  function detach(){
+    if (!attached) return;
+    v.pause();
+    while (v.firstChild) v.removeChild(v.firstChild);
+    v.removeAttribute('src');
+    attached = false; v.load();      /* aborts the in-flight fetch, resets to the poster */
+    if (btn) btn.hidden = true;
+  }
+  function apply(){ allowed() ? attach() : detach(); }
+
+  if (btn) {
+    btn.addEventListener('click', function(){
+      if (v.paused) {
+        userPaused = false;
+        var p = v.play();
+        /* Sync AFTER the promise settles: if playback is refused, the label must say so
+           rather than claim the video is running. */
+        if (p && p.then) p.then(syncBtn, syncBtn); else syncBtn();
+      } else {
+        userPaused = true; v.pause(); syncBtn();
+      }
+    });
+    /* Belt and braces: the media element itself is authoritative. */
+    v.addEventListener('play', syncBtn);
+    v.addEventListener('pause', syncBtn);
+  }
+  apply(); on(mqMotion, apply); on(mqPointer, apply);
+})();
+
+/* ---- Scroll choreography.
+   The hidden state is armed PER ELEMENT here, never in the stylesheet, and a failsafe timer
+   disarms everything if the observer has not fired. A full-page capture caught the previous
+   version rendering two entire sections blank. Content must never depend on JS to be visible. ---- */
+(function(){
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function disarmAll(){ els.forEach(function(el){ el.classList.remove('reveal--armed'); }); }
+
+  if (!('IntersectionObserver' in window) || reduce) return;   /* leave everything visible */
+
+  els.forEach(function(el){ el.classList.add('reveal--armed'); });
+
+  /* Failsafe: if anything is still armed and un-revealed after 2.5s, show it. A reveal that
+     never fires is a content-loss bug, not a style choice. */
+  var failsafe = setTimeout(disarmAll, 2500);
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+  els.forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('.pivot').forEach(function(el){ io.observe(el); });
+  window.addEventListener('pagehide', function(){ clearTimeout(failsafe); disarmAll(); });
+
+  /* Give the arc its true path length so the dash animation is exact at any viewport. */
+  /* ONLY the custom property is set. Writing strokeDashoffset inline pins it forever — an
+     inline style beats any stylesheet rule, so `.pivot.is-in .pivot__arc-line{dashoffset:0}`
+     could never win and the line silently never drew. The class fired; the animation did not.
+     Screenshots cannot catch this (the arc SHAPE looks right either way); only driving the
+     page and measuring the computed value does. */
+  document.querySelectorAll('.pivot__arc-line, .pivot__arc-echo').forEach(function(arc){
+    if (arc.getTotalLength) arc.style.setProperty('--len', Math.ceil(arc.getTotalLength()));
+  });
+})();
+
+/* ---- Booking form.
+   This is a MOCKUP, so the form must not pretend to submit. It has no action, and rather than
+   letting the browser navigate to the same URL (which looks like a successful send and is not),
+   submission is prevented and the form SAYS what happened. A form that silently posts nowhere is
+   the worst of the three options: the visitor believes they have booked.
+   The message is role="status", so a screen reader is told too rather than only sighted users. ---- */
+(function(){
+  var form = document.querySelector('.book__form');
+  if (!form) return;
+  var note = document.getElementById('bookDemo');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (note) note.hidden = false;
+  });
+})();
+
+/* ---- Before/after comparison.
+   The control IS a native <input type="range"> stretched invisibly across the frame. That one
+   decision buys drag-anywhere with a mouse, swipe on touch, arrow-key and Home/End operation,
+   a real accessible name and a real focus ring — none of which a custom div-and-pointermove
+   implementation gets without writing all of it by hand and getting it wrong.
+   The initial 50% is set in CSS, so the comparison is correct before this script runs and
+   stays correct if it never does. ---- */
+(function(){
+  document.querySelectorAll('.ba__range').forEach(function(r){
+    var frame = r.closest('.ba__frame');
+    if (!frame) return;
+    function sync(){ frame.style.setProperty('--pos', r.value + '%'); }
+    r.addEventListener('input', sync);
+    sync();
+    /* THE control is hidden in CSS and revealed only here. If this line never executes — CSP
+       blocked the script, an earlier error stopped it, scripting is off — the comparison stays
+       a correct static 50/50 with both labels, and no dead handle is offered. */
+    frame.classList.add('ba--live');
+  });
+})();
+
+/* ---- Sticky desktop CTA bar.
+   Shown only once the hero has left the viewport, and only where a desktop pointer and the
+   width both agree — below 900px the header already keeps a permanent phone link and a second
+   fixed bar would eat a phone screen. Unhiding is the ONLY thing JS does here; if it never
+   runs the bar simply stays absent, which is the harmless failure. ---- */
+(function(){
+  var bar  = document.getElementById('stickybar');
+  var hero = document.querySelector('.hero');
+  if (!bar || !hero || !('IntersectionObserver' in window)) return;
+  var mq = matchMedia('(min-width:901px)');
+
+  /* MEASURE the emergency bar rather than hard-coding its height. That bar is sticky, carries
+     the phone and the $34 line, and drops items as the viewport narrows — so its height is a
+     moving number. A hard-coded offset would either cover it or float below it. */
+  var emerg = document.querySelector('.emerg');
+  function offset(){
+    if (!emerg) return;
+    bar.style.setProperty('--emerg-h', Math.round(emerg.getBoundingClientRect().height) + 'px');
+  }
+  offset();
+  addEventListener('resize', offset, { passive: true });
+  /* 🔴 CMQA RUNG-2 MED #10: a resize listener only fires on WINDOW resize. The bar can change
+     height without one — text-only zoom, a font swapping in late, localisation, any DOM edit.
+     The offset then goes stale and the CTA slides under the bar above it. A ResizeObserver
+     watches the ELEMENT, which is the thing that actually changes. */
+  if (emerg && 'ResizeObserver' in window) new ResizeObserver(offset).observe(emerg);
+
+  function show(on){
+    if (on && mq.matches) { bar.hidden = false; requestAnimationFrame(function(){ bar.classList.add('is-in'); }); }
+    else { bar.classList.remove('is-in'); bar.hidden = true; }
+  }
+  var past = false;
+  new IntersectionObserver(function(e){
+    past = !e[0].isIntersecting;
+    show(past);
+  }, { threshold: 0 }).observe(hero);
+
+  function onMq(){ show(past); }
+  mq.addEventListener ? mq.addEventListener('change', onMq) : mq.addListener(onMq);
+})();
+</script>
+
+</body>
+</html>

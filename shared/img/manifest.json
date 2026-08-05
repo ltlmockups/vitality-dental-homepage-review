@@ -1,0 +1,242 @@
+{
+ "office-treatment-room.webp": {
+  "bytes": 53326,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-office-16-1536x1024.webp"
+ },
+ "office-reception.webp": {
+  "bytes": 82702,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-office-22-1536x1024.webp"
+ },
+ "office-exterior.webp": {
+  "bytes": 64936,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-office-29-1-1536x1024.webp"
+ },
+ "office-hallway.webp": {
+  "bytes": 115720,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-office-11-1536x1024.webp"
+ },
+ "office-chair.webp": {
+  "bytes": 63336,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-office-8-1536x1024.webp"
+ },
+ "office-detail.webp": {
+  "bytes": 76966,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-office-5-1-1536x1024.webp"
+ },
+ "dr-kung.webp": {
+  "bytes": 40830,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/dr-kung-dentist-plano-tx.webp"
+ },
+ "dr-son.jpg": {
+  "bytes": 334056,
+  "type": "image/jpeg",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/12/Dr-Brian-Son-picture.jpg"
+ },
+ "dr-burkett.jpg": {
+  "bytes": 268651,
+  "type": "image/jpeg",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2026/06/Dr.-David-Burkett.jpg"
+ },
+ "ba-sarah-before.jpg": {
+  "bytes": 310532,
+  "type": "image/jpeg",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/11/Cosmetic-Sarah-before-scaled.jpg"
+ },
+ "ba-sarah-after.jpg": {
+  "bytes": 402483,
+  "type": "image/jpeg",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/11/Cosmetic-Sarah-after-scaled.jpg"
+ },
+ "ba-keith-before.jpg": {
+  "bytes": 576439,
+  "type": "image/jpeg",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/12/KeithAnterior-Crowns-Before--scaled.jpg"
+ },
+ "ba-keith-after.jpg": {
+  "bytes": 569339,
+  "type": "image/jpeg",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/12/KeithAnterior-Crowns-After--scaled.jpg"
+ },
+ "badge-ada.webp": {
+  "bytes": 1000,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/img-assoc-ada-1.webp"
+ },
+ "badge-tda.webp": {
+  "bytes": 1986,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/img-assoc-tda-1.webp"
+ },
+ "badge-aacd.webp": {
+  "bytes": 3232,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/img-assoc-aacd-1.webp"
+ },
+ "badge-acp.webp": {
+  "bytes": 2044,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/img-assoc-acp-1.webp"
+ },
+ "badge-icoi.webp": {
+  "bytes": 2818,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/img-assoc-icoi-1.webp"
+ },
+ "badge-agd.webp": {
+  "bytes": 2640,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/img-assoc-agd-1.webp"
+ },
+ "tech-3d-imaging.webp": {
+  "bytes": 21180,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-dentist-plano-3d-cone-beam-imaging-1.webp"
+ },
+ "tech-scanner.webp": {
+  "bytes": 15406,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-dentist-plano-3D-intraoral-scanner-medit.webp"
+ },
+ "tech-laser.webp": {
+  "bytes": 24522,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-dentist-plano-soft-tissue-laser-dentistry.webp"
+ },
+ "community.webp": {
+  "bytes": 29342,
+  "type": "image/webp",
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/vitality-dental-dentist-plano-love-our-community.webp"
+ },
+ "svc-all-on-4.webp": {
+  "bytes": 24176,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-All-on-4-Implants-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-childrens.webp": {
+  "bytes": 52174,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Childrens-Dentistry-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-cosmetic.webp": {
+  "bytes": 28548,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Cosmetic-Dentist-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-gum-disease.webp": {
+  "bytes": 51408,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Gum-Disease-Treatment-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-dentures.webp": {
+  "bytes": 26296,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Dentures-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-invisalign.webp": {
+  "bytes": 21396,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Invisalign®Dentist-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-orthodontics.webp": {
+  "bytes": 19096,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Orthodontics-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-preventive.webp": {
+  "bytes": 31184,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Preventive-Dentistry-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-root-canal.webp": {
+  "bytes": 47824,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Root-Canal-Therapy-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-sedation.webp": {
+  "bytes": 33132,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Sedation-Dentistry-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-extractions.webp": {
+  "bytes": 16690,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Tooth-Extractions-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "svc-wisdom-teeth.webp": {
+  "bytes": 20170,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/vitalitydental-Wisdom-Tooth-Extractions-1024x683.webp",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "ba-will-before.jpg": {
+  "bytes": 649254,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/Cosmetic-Will-before.jpg",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "ba-will-after.jpg": {
+  "bytes": 483387,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/Cosmetic-Will-after.jpg",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "icon-restorative.png": {
+  "bytes": 12125,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/restorative.png",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "icon-implant.png": {
+  "bytes": 9721,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/implant-2.png",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "icon-emergency.png": {
+  "bytes": 10474,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/emergency.png",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "tech-printer.png": {
+  "bytes": 92404,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/Technology-picture-of-printer-1024x781.png",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "tech-digital.jpeg": {
+  "bytes": 211602,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/digitalTechnology-scaled.jpeg",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "offer-implant-bridge.webp": {
+  "bytes": 12044,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/img-Implant-Bridge.webp",
+  "note": "FULL-SIZE replacement pulled 2026-08-03 — the 300px crop was being upscaled on HiDPI"
+ },
+ "offer-child-coupon.webp": {
+  "bytes": 26522,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/img-coupon-child.webp",
+  "note": "FULL-SIZE replacement pulled 2026-08-03 — the 300px crop was being upscaled on HiDPI"
+ },
+ "offer-insurance.webp": {
+  "bytes": 21998,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/2025/03/img-Insurance-Special.webp",
+  "note": "FULL-SIZE replacement pulled 2026-08-03 — the 300px crop was being upscaled on HiDPI"
+ },
+ "cred-icoi-fellow.png": {
+  "bytes": 5492,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/ICOI-fellow.png",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "cred-fagd.jpeg": {
+  "bytes": 7943,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/FAGD.jpeg",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ },
+ "testimonial-2-poster.jpg": {
+  "bytes": 151748,
+  "source": "https://vitalitydentaldfw.com/wp-content/uploads/video-testimonial-1.jpg",
+  "note": "captured from the live homepage 2026-07-30, promoted into the build 2026-08-03"
+ }
+}
